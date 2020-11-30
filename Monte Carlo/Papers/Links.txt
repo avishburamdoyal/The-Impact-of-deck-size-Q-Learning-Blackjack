@@ -1,0 +1,13 @@
+1. https://medium.com/gradientcrescent/fundamentals-of-reinforcement-learning-understanding-blackjack-strategy-through-monte-carlo-88c9b85194ed [MonteCarlo1]
+2. https://towardsdatascience.com/learning-to-win-blackjack-with-monte-carlo-methods-61c90a52d53e [MonteCarlo2]
+3. https://towardsdatascience.com/monte-carlo-methods-estimate-blackjack-policy-fcc89df7f029 [MonteCarlo3]
+4. https://www.kth.se/social/files/58b941d5f276542843812288/RL04-Monte-Carlo.pdf [MonteCarlo4]
+5. http://web.eecs.utk.edu/~ielhanan/courses/ECE-517/notes/lecture9.pdf [MonteCarlo5]
+6. https://towardsdatascience.com/playing-blackjack-using-model-free-reinforcement-learning-in-google-colab-aa2041a2c13d [MonteCarlo6]
+7. https://towardsdatascience.com/reinforcement-learning-solving-blackjack-5e31a7fb371f [MonteCarlo7]
+8. https://www.programmersought.com/article/17095819013/ [MonteCarlo8]
+
+8. https://notebook.community/davidbrown3/reinforcement-learning/TD/Q-Learning%20Solution [Methodology 1]
+9. https://towardsdatascience.com/a-gentle-introduction-to-reinforcement-learning-or-what-to-do-when-you-dont-know-what-to-do-31faf5acd60b [Methodology 2]
+10. https://www.learndatasci.com/tutorials/reinforcement-q-learning-scratch-python-openai-gym/ [Methodology 3]
+11. https://www.programmersought.com/article/17095819013/ [Methodology 4]

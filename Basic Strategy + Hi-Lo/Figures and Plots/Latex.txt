@@ -1,0 +1,396 @@
+
+
+
+\subsection{Result 3: Monte Carlo prediction}
+
+$\begin{array}{|c|c|c|}
+\hline \text { Rewards } & \text { Actions } & \text { Ace } \\
+\hline \text { +1 if player won } & \text { Hit } & 1 \\
+\hline \text { -1 if player loses } & \text { Stand } & 11 \\
+\hline \text { 0 if game is a draw } & & \\
+\hline
+\end{array}$
+\vspace{0.2cm}
+
+
+
+\subsubsection{Off-policy}
+
+\begin{center}
+    \includegraphics[width = 140mm, scale=0.8]{Monte_offpolicy.png}
+    \begin{figure} [!h]
+    \caption{Monte Carlo off-policy} \label{fig:fig}
+    \end{figure}
+\end{center}
+
+\subsubsection{On-policy}
+
+\begin{center}
+    \includegraphics[width = 140mm, scale=0.8]{Monte_onpolicy.png}
+    \begin{figure} [!h]
+    \caption{Monte Carlo on-policy} \label{fig:fig}
+    \end{figure}
+\end{center}
+
+\subsection{Result 4: Q-Learning}
+\subsubsection{Epsilon greedy algorithm}
+\subsubsection{Other Q-Learning algorithms}
+
+\subsection{Result 5: Deep Q-Learning}
+Although we have a fairly small state space, using a neural network as an approximator might potentially yield better results. The neural network learns the Q-matrix rather than storing it in memory. The Deep-Q network also introduced the idea of an experience buffer which stores and samples from the agent's experiences. 
+\*
+
+We therefore consider new approach like Vanilla Q-Learning also known ad Deep Q-Learning. The Deep-Q networks
+
+\subsubsection{Double Q-Learning}
+\subsubsection{Vanilla Q-Learning}
+
+\subsection{Result 6: Complex Dynamics}
+
+\subsection{Result 7: Replicating 21}
+
+
+\begin{enumerate}
+    \item Multiple tables
+    \item 6 card counters , 1 on each table
+    \item 1 big player to switch across tables with higher counts
+    \item Big player knows true count on table joined from mnemonic signals 
+    \item Big player knows which table has potentially high count from signals allowed from peers in team. 
+\end{enumerate}
+
+\textbf{Example of game settings}:
+\vspace{0.2cm}
+
+We assume a casino with 6 tables, each allowing for a standard blackjack game to occur. Each table starts off with the same number of decks, players (including 1 card counter), i.e. 1 card counter and 5 other players on each table and also a dealer per table. The similar rules as outlined in section \ref{sec:blackjack_rules} are followed. Each card counter keeps track of the count (Hi-Low method). Only one of the card counters, called the Big Player however sizes his bet using the Hi-Low method. The other card counters only store the count on every round, but randomly size their bet as a \% of their bankroll. The Big Player also follows the Basic Strategy Table as outlined in Section \ref{sec:appendix} of Appendix in deciding on his optimal action(s) on each round. If we assume a case for 10,000 simulations, for the first say $1/5th$ simulation, i.e. after the first 2000 simulations, the player switches to the table having the highest true count. From signals allowed from peers in team, the Big Player joins the table having the highest count. We then allow for 2 card counters to follow the Basic Strategy Table and Hi-Low method to optimize their financial return. The other players however generally keep a low profile before the Big Player joins him to the table to avoid suspicion and casino backoff.
+
+
+
+\section{Can we still beat the dealer?}
+
+\begin{enumerate}
+    \item \textbf{Casino backoff issue}: Can we get caught counting cards ? 
+    \item \textbf{Automatic deck shuffler issue}: Does it effect on player performance ?
+    \item \textbf{Memory issue}: Can player really count cards for increased deck size and simulation ?
+    \item \textbf{Casino Type}: Is the game being fairly played ?
+    \end{enumerate}
+    
+\section{Concluding remarks}
+
+\section{Future Work}
+\newpage
+
+\section{Python usage}
+\subsection{Packages and libraries used}
+\subsection{Blackjack environments}
+
+
+\section{Appendix} \label{sec:appendix}
+\*
+
+\subsection{Strategy Table}
+
+\begin{center}
+    \includegraphics[width = 180mm, scale=0.8]{Strategy Table.jpg}
+    \begin{figure} [!h]
+    \caption{Strategy Table 1} \label{fig:fig2}
+    \end{figure}
+\end{center}
+
+The above two tables in Figure \ref{fig:fig2} are the strategy tables adapted by \citep{mich}. To use the basic strategy, a player looks  up  his  hand  along  the  left  vertical  edge  and  the dealer’s up card along the top.  In both cases an A stands for ace.  From top to bottom are the hard totals, soft totals, and splittable hands. There are two charts depending on whether the dealer hits or stands on soft 17
+\vspace{0.2cm}
+
+\subsection{Reinforcement Learning algorithms}
+
+\textbf{First-visit MC algorithm}
+\vspace{0.1cm}
+
+\begin{tcolorbox}[
+    standard jigsaw,
+    title=First-visit MC to estimate $v_{\pi}$,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+]
+Initialize:\\
+\quad $\pi \leftarrow$ policy to be evaluated\\
+$V \leftarrow$ an arbitrary state-value function\\
+Returns $(s) \leftarrow$ an empty list, for all $s \in \mathcal{S}$
+\vspace{1cm}
+
+Repeat forever:\\
+Generate an episode using $\pi$ \\
+For each state $s$ appearing in the episode:\\
+G \leftarrow \text{return following the first occurrence of s}\\
+\text{Append G to} \text { Returns }(s)\\
+V(s) \leftarrow \text { average }(\text {Returns}(s))
+\end{tcolorbox}
+
+\textbf{Note}: The first-visit MC will converge to $v_{\pi}(s)$ as the number of first-visit or visits to s goes to infinity. 
+\vspace{0.2cm}
+
+\begin{tcolorbox}[
+    standard jigsaw,
+    title=$TD(0)$ control algorithm,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+]
+Input: the policy $\pi$ to be evaluated \\
+Initialize $V(s)$ arbitrarily $\left(\right.$ e.g. $\left., V(s)=0, \forall s \in \mathcal{S}^{+}\right)$\\
+Repeat (for each episode):\\
+Initialize $S$ Repeat (for each step of episode):\\
+$A \leftarrow$ action given by $\pi$ for $S$ \\
+Take action $A ;$ observe reward, $R,$ and next state, $S^{\prime}$ \\
+V(S) \leftarrow V(S)+\alpha\left[R+\gamma V\left(S^{\prime}\right)-V(S)\right] \\
+S \leftarrow S^{\prime}
+
+until $S$ is terminal 
+\end{tcolorbox}
+
+\textbf{Note}: TD such as MC updates are referred to as "sample backups". The reason for so is that both methods involve looking ahead to a sample successor using the value of the successor and its reward to compute a \textbf{backed-up} value to update the value of the original state. 
+\vspace{0.2cm}
+
+\begin{tcolorbox}[
+    standard jigsaw,
+    title=SARSA on-policy TD control algorithm,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+]
+Initialize $Q(s, a), \forall s \in \mathcal{S}, a \in \mathcal{A}(s),$ arbitrarily, and $Q($terminal-state$, \cdot)=0$\\
+Repeat (for each episode):\\
+Initialize $S$\\
+Choose $A$ from $S$ using policy derived from $Q$ (e.g., $\epsilon$ -greedy)\\
+Repeat (for each step of episode):\\
+Take action $A,$ observe $R, S^{\prime}$\\
+Choose $A^{\prime}$ from $S^{\prime}$ using policy derived from $Q$ (e.g., $\epsilon$ -greedy $)$\\
+Q(S, A) \leftarrow Q(S, A)+\alpha\left[R+\gamma Q\left(S^{\prime}, A^{\prime}\right)-Q(S, A)\right] \\
+S \leftarrow S ; A \leftarrow A^{\prime};
+
+until $S$ is terminal
+\end{tcolorbox}
+
+\textbf{Note}:
+
+\begin{lstlisting}[language=Python, caption=Python example]
+import numpy as np
+    
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+    
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1) 
+
+    for i in range(m-1):
+        for j in range(i+1, m):
+            [r,c] = np.where(M2 == M1[i,j])
+            for k in range(len(r)):
+                VT[(i)*n + r[k]] = 1;
+                VT[(i)*n + c[k]] = 1;
+                VT[(j)*n + r[k]] = 1;
+                VT[(j)*n + c[k]] = 1;
+                
+                if M is None:
+                    M = np.copy(VT)
+                else:
+                    M = np.concatenate((M, VT), 1)
+                
+                VT = np.zeros((n*m,1), int)
+    
+    return M
+\end{lstlisting}
+
+\subsection{Result 3: Monte Carlo prediction}
+
+$\begin{array}{|c|c|c|}
+\hline \text { Rewards } & \text { Actions } & \text { Ace } \\
+\hline \text { +1 if player won } & \text { Hit } & 1 \\
+\hline \text { -1 if player loses } & \text { Stand } & 11 \\
+\hline \text { 0 if game is a draw } & & \\
+\hline
+\end{array}$
+\vspace{0.2cm}
+
+
+
+\subsubsection{Off-policy}
+
+\begin{center}
+    \includegraphics[width = 140mm, scale=0.8]{Monte_offpolicy.png}
+    \begin{figure} [!h]
+    \caption{Monte Carlo off-policy} \label{fig:fig}
+    \end{figure}
+\end{center}
+
+\subsubsection{On-policy}
+
+\begin{center}
+    \includegraphics[width = 140mm, scale=0.8]{Monte_onpolicy.png}
+    \begin{figure} [!h]
+    \caption{Monte Carlo on-policy} \label{fig:fig}
+    \end{figure}
+\end{center}
+
+\subsection{Result 4: Q-Learning}
+\subsubsection{Epsilon greedy algorithm}
+\subsubsection{Other Q-Learning algorithms}
+
+\subsection{Result 5: Deep Q-Learning}
+Although we have a fairly small state space, using a neural network as an approximator might potentially yield better results. The neural network learns the Q-matrix rather than storing it in memory. The Deep-Q network also introduced the idea of an experience buffer which stores and samples from the agent's experiences. 
+\*
+
+We therefore consider new approach like Vanilla Q-Learning also known ad Deep Q-Learning. The Deep-Q networks
+
+\subsubsection{Double Q-Learning}
+\subsubsection{Vanilla Q-Learning}
+
+\subsection{Result 6: Complex Dynamics}
+
+\subsection{Result 7: Replicating 21}
+
+
+\begin{enumerate}
+    \item Multiple tables
+    \item 6 card counters , 1 on each table
+    \item 1 big player to switch across tables with higher counts
+    \item Big player knows true count on table joined from mnemonic signals 
+    \item Big player knows which table has potentially high count from signals allowed from peers in team. 
+\end{enumerate}
+
+\textbf{Example of game settings}:
+\vspace{0.2cm}
+
+We assume a casino with 6 tables, each allowing for a standard blackjack game to occur. Each table starts off with the same number of decks, players (including 1 card counter), i.e. 1 card counter and 5 other players on each table and also a dealer per table. The similar rules as outlined in section \ref{sec:blackjack_rules} are followed. Each card counter keeps track of the count (Hi-Low method). Only one of the card counters, called the Big Player however sizes his bet using the Hi-Low method. The other card counters only store the count on every round, but randomly size their bet as a \% of their bankroll. The Big Player also follows the Basic Strategy Table as outlined in Section \ref{sec:appendix} of Appendix in deciding on his optimal action(s) on each round. If we assume a case for 10,000 simulations, for the first say $1/5th$ simulation, i.e. after the first 2000 simulations, the player switches to the table having the highest true count. From signals allowed from peers in team, the Big Player joins the table having the highest count. We then allow for 2 card counters to follow the Basic Strategy Table and Hi-Low method to optimize their financial return. The other players however generally keep a low profile before the Big Player joins him to the table to avoid suspicion and casino backoff.
+
+
+
+\section{Can we still beat the dealer?}
+
+\begin{enumerate}
+    \item \textbf{Casino backoff issue}: Can we get caught counting cards ? 
+    \item \textbf{Automatic deck shuffler issue}: Does it effect on player performance ?
+    \item \textbf{Memory issue}: Can player really count cards for increased deck size and simulation ?
+    \item \textbf{Casino Type}: Is the game being fairly played ?
+    \end{enumerate}
+    
+\section{Concluding remarks}
+
+\section{Future Work}
+\newpage
+
+\section{Python usage}
+\subsection{Packages and libraries used}
+\subsection{Blackjack environments}
+
+
+\section{Appendix} \label{sec:appendix}
+\*
+
+\subsection{Strategy Table}
+
+\begin{center}
+    \includegraphics[width = 180mm, scale=0.8]{Strategy Table.jpg}
+    \begin{figure} [!h]
+    \caption{Strategy Table 1} \label{fig:fig2}
+    \end{figure}
+\end{center}
+
+The above two tables in Figure \ref{fig:fig2} are the strategy tables adapted by \citep{mich}. To use the basic strategy, a player looks  up  his  hand  along  the  left  vertical  edge  and  the dealer’s up card along the top.  In both cases an A stands for ace.  From top to bottom are the hard totals, soft totals, and splittable hands. There are two charts depending on whether the dealer hits or stands on soft 17
+\vspace{0.2cm}
+
+\subsection{Reinforcement Learning algorithms}
+
+\textbf{First-visit MC algorithm}
+\vspace{0.1cm}
+
+\begin{tcolorbox}[
+    standard jigsaw,
+    title=First-visit MC to estimate $v_{\pi}$,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+]
+Initialize:\\
+\quad $\pi \leftarrow$ policy to be evaluated\\
+$V \leftarrow$ an arbitrary state-value function\\
+Returns $(s) \leftarrow$ an empty list, for all $s \in \mathcal{S}$
+\vspace{1cm}
+
+Repeat forever:\\
+Generate an episode using $\pi$ \\
+For each state $s$ appearing in the episode:\\
+G \leftarrow \text{return following the first occurrence of s}\\
+\text{Append G to} \text { Returns }(s)\\
+V(s) \leftarrow \text { average }(\text {Returns}(s))
+\end{tcolorbox}
+
+\textbf{Note}: The first-visit MC will converge to $v_{\pi}(s)$ as the number of first-visit or visits to s goes to infinity. 
+\vspace{0.2cm}
+
+\begin{tcolorbox}[
+    standard jigsaw,
+    title=$TD(0)$ control algorithm,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+]
+Input: the policy $\pi$ to be evaluated \\
+Initialize $V(s)$ arbitrarily $\left(\right.$ e.g. $\left., V(s)=0, \forall s \in \mathcal{S}^{+}\right)$\\
+Repeat (for each episode):\\
+Initialize $S$ Repeat (for each step of episode):\\
+$A \leftarrow$ action given by $\pi$ for $S$ \\
+Take action $A ;$ observe reward, $R,$ and next state, $S^{\prime}$ \\
+V(S) \leftarrow V(S)+\alpha\left[R+\gamma V\left(S^{\prime}\right)-V(S)\right] \\
+S \leftarrow S^{\prime}
+
+until $S$ is terminal 
+\end{tcolorbox}
+
+\textbf{Note}: TD such as MC updates are referred to as "sample backups". The reason for so is that both methods involve looking ahead to a sample successor using the value of the successor and its reward to compute a \textbf{backed-up} value to update the value of the original state. 
+\vspace{0.2cm}
+
+\begin{tcolorbox}[
+    standard jigsaw,
+    title=SARSA on-policy TD control algorithm,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+]
+Initialize $Q(s, a), \forall s \in \mathcal{S}, a \in \mathcal{A}(s),$ arbitrarily, and $Q($terminal-state$, \cdot)=0$\\
+Repeat (for each episode):\\
+Initialize $S$\\
+Choose $A$ from $S$ using policy derived from $Q$ (e.g., $\epsilon$ -greedy)\\
+Repeat (for each step of episode):\\
+Take action $A,$ observe $R, S^{\prime}$\\
+Choose $A^{\prime}$ from $S^{\prime}$ using policy derived from $Q$ (e.g., $\epsilon$ -greedy $)$\\
+Q(S, A) \leftarrow Q(S, A)+\alpha\left[R+\gamma Q\left(S^{\prime}, A^{\prime}\right)-Q(S, A)\right] \\
+S \leftarrow S ; A \leftarrow A^{\prime};
+
+until $S$ is terminal
+\end{tcolorbox}
+
+\textbf{Note}:
+
+\begin{lstlisting}[language=Python, caption=Python example]
+import numpy as np
+    
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+    
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1) 
+
+    for i in range(m-1):
+        for j in range(i+1, m):
+            [r,c] = np.where(M2 == M1[i,j])
+            for k in range(len(r)):
+                VT[(i)*n + r[k]] = 1;
+                VT[(i)*n + c[k]] = 1;
+                VT[(j)*n + r[k]] = 1;
+                VT[(j)*n + c[k]] = 1;
+                
+                if M is None:
+                    M = np.copy(VT)
+                else:
+                    M = np.concatenate((M, VT), 1)
+                
+                VT = np.zeros((n*m,1), int)
+    
+    return M
+\end{lstlisting}

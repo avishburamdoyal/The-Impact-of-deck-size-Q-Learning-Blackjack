@@ -1,0 +1,2071 @@
+% ----------------------------------------------------------------
+% AMS-LaTeX definitions for a Dissertation/Thesis ****************
+% Template prepared by T.A. McWalter (March 2009)
+% ----------------------------------------------------------------
+\documentclass[a4paper,11pt,oneside]{article}
+
+% PACKAGES -------------------------------------------------------
+
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{fancyhdr}
+\usepackage{longtable}
+%\usepackage{fancyvrb}
+\usepackage[font=scriptsize,labelfont=bf]{caption}
+
+\usepackage[english]{babel}
+\usepackage[textwidth=3cm,margin=1.2cm,columnsep=1cm,bottom=2cm, top=1.8cm]{geometry}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+%\usepackage{tabular}
+\usepackage{enumitem}
+
+%\setlength\textwidth{\dimexpr (3in -1in/16)*2 + 3in/8\relax}
+%\setlength\columnsep{\dimexpr 3in/8\relax}
+
+\usepackage{color}
+\usepackage[linktocpage,colorlinks=true,linkcolor= {red!50!black}, urlcolor=grey, citecolor=blue!90, pdfborder={2 1 0}]{hyperref}
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+\newcommand{\MYhref}[3][blue]{\href{#2}{\color{#1}{#3}}}%
+
+            
+\usepackage{float}
+%\usepackage{fancyvrb}
+\usepackage{array}
+\usepackage{tabularx}
+ \usepackage{colortbl} 
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage[numbib,nottoc]{tocbibind}
+
+%\usepackage[caption=true]{subfig}
+%\usepackage{multirow}
+\usepackage{algorithm}
+%\usepackage{enumerate}
+\usepackage{algpseudocode}
+%\usepackage[colorlinks=true,linkcolor=black, citecolor=blue, urlcolor=blue]{hyperref}
+%\usepackage{tikz,pgfplots}
+%\usepackage{breqn}
+%\usepackage{widetext}
+%\usepackage{bbm}
+\usepackage{cleveref}
+\usepackage{mathtools}
+\usepackage[square,sort,comma,super,authoryear]{natbib}
+\usepackage{url}
+
+
+
+\usepackage{}
+
+\usepackage{amssymb}
+%\usepackage[caption=true]{subfig}
+%\usepackage{multirow}
+\usepackage{algorithm}
+%\usepackage{enumerate}
+\usepackage{algpseudocode}
+%\usepackage{tikz,pgfplots}
+%\usepackage{breqn}
+%\usepackage{widetext}
+%\usepackage{bbm}
+\usepackage{cleveref}
+\usepackage{mathtools}
+%\usepackage{natbib}
+%\usepackage{url}
+
+
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\setlength\bibindent{0em}
+
+\makeatletter
+\renewcommand\NAT@bibsetnum[1]{\settowidth\labelwidth{\@biblabel{#1}}%
+   \setlength{\leftmargin}{\bibindent}\addtolength{\leftmargin}{\dimexpr\labelwidth+\labelsep\relax}%
+   \setlength{\itemindent}{-\bibindent}%
+   \setlength{\listparindent}{\itemindent}
+\setlength{\itemsep}{\bibsep}\setlength{\parsep}{\z@}%
+   \ifNAT@openbib
+     \addtolength{\leftmargin}{\bibindent}%
+     \setlength{\itemindent}{-\bibindent}%
+     \setlength{\listparindent}{\itemindent}%
+     \setlength{\parsep}{0pt}%
+   \fi
+}
+\makeatother
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+% GRAPHICS HANDLING ----------------------------------------------
+
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+    \pdffalse                   % not running PDFTeX
+\else
+    \ifx\pdfoutput\relax
+        \pdffalse               % not running PDFTeX
+    \else
+        \ifnum\pdfoutput>0
+            \pdftrue            % running PDFTeX, with PDF output
+        \else
+            \pdffalse           % running PDFTeX, with DVI output
+        \fi
+    \fi
+\fi
+
+\ifpdf
+    \usepackage[pdftex]{graphicx}
+    \DeclareGraphicsExtensions{.pdf, .jpg, .tif}
+    \newcommand{\bb}{viewport}
+\else
+    \usepackage{graphicx}
+    \DeclareGraphicsExtensions{.eps, .jpg}
+    \newcommand{\bb}{bb}
+\fi
+
+% OTHER SET-UP ---------------------------------------------------
+
+\pagestyle{fancy}
+\lhead{\rightmark}
+\chead{}
+\rhead{\thepage}
+\cfoot{}
+
+\setlength{\topmargin}{0.5cm}
+\setlength{\headsep}{1cm}
+\setlength{\textwidth}{14.0cm}
+\setlength{\headwidth}{14.0cm}
+\setlength{\headheight}{14pt}
+\setlength{\textheight}{22cm}
+\setlength{\oddsidemargin}{1.3cm}
+\setlength{\evensidemargin}{0cm}
+\setlength{\parindent}{0pt}
+
+
+\newcommand{\setlinespacing}[1]
+           {\renewcommand{\baselinestretch}{#1}\small\normalsize}
+
+\allowdisplaybreaks[1]
+
+% THEOREM STYLES -------------------------------------------------
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}%[chapter]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{con}[thm]{Conjecture}
+\newtheorem{lem}[thm]{Lemma}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ass}[thm]{Assumption}
+\newtheorem{exam}[thm]{Example}
+
+% MACRO DEFINITIONS ----------------------------------------------
+
+% Place your personal macro definitions here.
+
+% PREAMBLE -------------------------------------------------------
+
+\title{STA Honours Project\\\textbf{The Impact of deck size Q-Learning Blackjack}}
+\author{Avish Buramdoyal\\Supervisor: Assoc. Prof Tim Gebbie \\[0.25cm]
+Department of Statistical Science\\
+University of Cape Town\\[0.25cm]
+\\*
+
+
+\includegraphics[scale=1]{UCT-logo.pdf}}
+\date{\today}
+
+% MAIN DOCUMENT --------------------------------------------------
+
+\providecommand{\keywords}[1]{\textbf{Keywords:}}
+
+\begin{document}
+
+\maketitle \vspace{-2mm}
+\thispagestyle{empty}
+
+\begin{abstract}
+\noindent
+Blackjack or 21 is a popular card-based game of chance and skill played in many casinos. The objective of the game is to win money by obtaining a point total higher than the dealer’s without exceeding 21. Finding an optimal blackjack strategy proves to be a difficult but interesting problem, due the stochastic nature of the game and particularly when it involves playing with an unknown deck size. The ideal blackjack strategy will maximize ﬁnancial return in the long run while avoiding gamblers ruin. The stochastic environment and inherent reward structure of the game presents an appealing problem to reinforcement learning algorithms.  This project explores the problem of a finite deck in order to explore the learning rates for Q-learning.
+\end{abstract}
+
+
+\noindent
+\textbf{Keywords:} \text{house edge, betting unit, stochastic}
+\bigskip
+
+\newpage
+
+% Declaration --------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Declaration}
+
+I, AVISH BURAMDOYAL, declare that this dissertation titled, "The Impact of deck size Q-Learning Blackjack" and the work presented in it are my own. I confirm that: 
+
+\begin{itemize}
+ \renewcommand{\labelitemi}{\scriptsize$\blacksquare$}
+ \item This work was done wholly while in candidature for a research degree at this University. 
+ \item The contents of this dissertation has not been previously submitted for a degree or any other qualification at this University or any other institution. 
+ \item Where I have consulted the published work of others, this is always clearly attributed.
+ \item Where I have quoted from the work of others, the source is always given with the exception of such quotations, this thesis is entirely my work. 
+ \item I have acknowledged all main sources of help. 
+\end{itemize}
+
+
+\noindent\begin{tabular}{ll}
+\makebox[2.5in]{\hrulefill} & \makebox[2.5in]{\hrulefill}\\
+Signed & Date\\[8ex]% adds space between the two sets of signatures
+\end{tabular}
+
+
+\pagebreak
+\addcontentsline{toc}{section}{Declaration}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Terms of Reference --------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Terms of Reference}
+
+\textbf{Title}
+\*
+
+Impact of deck size Q-learning Blackjack.
+\vspace{0.3cm}
+
+\textbf{Description}
+\*
+
+
+The objective of this project is to reinforcement learn a simulated blackjack game using different Q-Learning algorithms and investigate the rate-of-learning convergence of these algorithms as a function of simulation size, deck size and number of players.
+\vspace{0.3cm}
+
+\textbf{Project Milestone Deliverables}
+
+\begin{table}[H] 
+\begin{tcolorbox}[tabularx*={\arrayrulewidth0.1mm}{X|X},fonttitle=\bfseries\large,fontupper=\normalsize\sffamily, 
+colback=white!10!white,colframe=black!40!, 
+coltitle=black,center title,toprule=1mm] 
+\centerline{\textbf{Date}} & \centerline{\textbf{Description}}\\\hline\hline 
+%\vspace{0.1mm}  \centerline{10 Jul 17} &  dGFKD  & Basic Materials \\ 
+ %                     &   $\boldsymbol{\cdot}$ Introduce parfors    &  
+%\\\hline 
+\vspace{0.1mm}  \centerline{21 April} &  \centerline{Supervisors' Topics}\\\hline 
+\vspace{0.1mm}  \centerline{22 April} & \centerline{Topics released}\\\hline
+\vspace{0.1mm}  \centerline{11 May} & \centerline{Project Allocation}\\\hline
+\vspace{0.1mm}  \centerline{29 May} & \centerline{Project Proposal}\\\hline
+\vspace{0.1mm}  \centerline{12 August} & \centerline{Progress Report}\\\hline
+\vspace{0.1mm}  \centerline{20 October to 22 October} & \centerline{Presentations} \\\hline
+\vspace{0.1mm}  \centerline{09 November} & \centerline{Final hand-in} \\\hline
+\end{tcolorbox} 
+\caption{Key dates and deliverables for research project} 
+\end{table} 
+
+\vspace{0.3cm}
+
+\textbf{Theoretical Proficiencies}
+\*
+
+Stochastic processes, real analysis, statistical learning and mathematical statistics.
+\vspace{0.3cm}
+
+\textbf{Applied Proficiencies}
+\*
+
+Python, theory of gambling and numerical methods in machine learning.
+
+
+\pagebreak
+\addcontentsline{toc}{section}{Terms of Reference}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Acknowledgements --------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Acknowledgements}
+Acknowledgements
+
+\pagebreak
+\addcontentsline{toc}{section}{Acknowledgements}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% CONTENT --------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\listoffigures
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\listoftables
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction} \label{sec:Introduction}
+ 
+\subsection{Problem being solved}
+The goal of this project is to develop a Reinforcement Learning agent for the game of blackjack. The project will involve implementing and simulating a Q-learning solution for optimal play and investigate the rate of learning convergence of the algorithm as a function of simulation size and deck size. Possible extensions to the base Q-learning will involve the use of neural networks for larger state spaces. In the last part of the project we consider replicating a scheme where sharing on information among agents in the blackjack environment occurs to compare the performance of the different models on house edge.   
+
+\subsection{Background study}
+
+The game of blackjack started in the 18th Century in France \citep{blackjackhistory1} and was called Vingt-et-Un, translating to 21. The rules of the game at that time somehow differed from modern casino game rules but had the same objective of getting a score as close to 21 without exceeding it \citep{blackjackhistory1}. The evolution of the game happened greatly in America and a house-banked blackjack system was first introduced in Nevada in 1931 \citep{blackjackhistory1}. The rise in prevalence of legalised games in Las vegas casinos inspired a number of players in developing optimal strategies for play \citep{blackjackhistory1}. The game during the 20th century was offering bonus payouts including one that paid an extra if a jack of spades/club i.e.  a blackjack was dealt along with an ace of spades \citep{blackjackorigin}. It  was  that  time  when  the  game  changed  its  name  to blackjack \citep{blackjackorigin}.
+
+\vspace{0.2cm}
+Roger Baldwin, Wilbert Cantey, Herbert Maisel and James McDermott were known by blackjack insiders as the “Four Horse-men”, being the first in determining the optimal strategy for blackjack play \citep{baileyinvented}.
+Baldwin et al. published, in 1956, the basic strategy to play blackjack. Since then, numerous researches have been conducted attempting to improve this strategy \citep{canyoustillbeat}. The first success was in the early 1960's when mathematics Professor Edward Thorp published his book "Beat the dealer a winning strategy for the game of 21" \citep{canyoustillbeat}. This caught the attention of a lot of blackjack players. Casino had to increase the deck size for each play in an attempt to overcome the effectiveness of the counting system \citep{canyoustillbeat}. Blackjack is one of today's most popular gambling games and is played in practically every casino worldwide.
+\newpage
+
+\subsection{Aims and Objectives}
+
+The project aims to demonstrate the different learning rates for different deck size blackjack games. This requires that the following objectives are met:
+\begin{enumerate}
+\item We implement a Q-learning algorithm, and reinforcement learn the simulated blackjack game.
+\item We visualise and investigate the rate-of-learning convergence for the algorithms as a function of simulation size and deck size.
+\item We will consider possible extensions to base Q-learning algorithm that can enhance convergence for a large number of decks.
+\item We aim to quantifying the deck-size threshold for Q-learning.
+\item We aim to quantifying the deck-size threshold for a Deep Q-learning algorithm \cite{deep_q} so that the learning rates and deck-size thresholds can be compared to vanilla Q-learning \cite{vanilla_q}.
+\item  Comparing the performance of the different Q-learning methods to know whether we learn to win when we do not know the size of the deck
+\item  Comparing the performance of a single RL agent to the multi-RL agents on house edge
+\end{enumerate}
+
+\subsection{Requirements Specification}
+
+\textbf{Data Requirements Specification}:
+
+There is no specific data requirement as the project data is generated by the Blackjack simulator.
+\vspace{0.2cm}
+
+\textbf{Systems Requirements Specification}:
+
+\begin{enumerate}
+
+\item \textbf{Hardware Requirements}
+
+For purpose of this analysis, I will make use of my personal computer to complete all the coding and simulation requirements.
+
+\item \textbf{Software Requirements}
+
+The softwares to be used for purpose of the project are:
+\end{enumerate}
+
+\begin{enumerate} [label=(\roman*)]
+    \item Python Wing 101 v. 7.2 to fulfill coding requirement (blackjack simulator and Learning blackjack)
+    \item Github for configuration and version control 
+    \item Latex using Texworks and Overleaf for versioning and technical documentation
+\end{enumerate}
+
+\noindent
+All software and test-cases will be made available via \MYhref{https://github.com/avb1597/blackjack_simulator/tree/master}
+{avb1597}  or similar to ensure the research is really reproducible and that the work can be replicated using test-data, test-code and the described and derived theory. 
+\newpage
+
+\subsection{Plan of Development}
+
+\begin{enumerate} [label=\Roman*.]
+    \item \textbf{Random Blackjack Simulator}: A random simulator where all players take random but intuitive actions. 
+    
+    \item \textbf{Basic Strategy + Hi-Low method}: An improved simulator where a card counter follows the basic strategy and Ed Thorp's Hi-Low count. The other players take random but intuitive actions.
+    
+    \item \textbf{Multi Agent}: The improved simulator where we allow all players to be card counters to assess whether the basic strategy still holds. 
+    
+    \item \textbf{Base Q-Learning (Hit and Stand only)}: Implementing an epsilon-greedy Q-Learning algorithm and reinforcement learn the game. Only hitting and standing implement as actions. 
+    
+    \item \textbf{Q-Learning (Doubling down and Splitting)}: Extend base Q-Learning algorithm to allow for doubling down and splitting actions. 
+    
+    \item  \textbf{Exploring Q-Learning algorithms}: Implementing SARSA algorithm. 
+    
+    \item  \textbf{Base Deep Q-Learning (Hit and Stand only)}: Implementing a Deep Q-Learning algorithm and reinforcement learn the game. Only hitting and standing implement as actions. 
+    
+    \item  \textbf{Deep Q-Learning (Doubling down and Splitting)}:  Extend base Q-Learning algorithm to allow for doubling down and splitting actions. 
+    
+    \item  \textbf{Complex Dynamics}: 
+    
+    
+    \item  \textbf{Replicating 21}: Extending base casino game to multiple tables with 6 card counters on each table. One player switches across tables with higher counts. The player is indicated potential table through signals and knows the count from mnemonic signals.
+\end{enumerate}
+
+\begin{center}
+    \includegraphics[width = 120mm, scale=0.8]{development_plan.jpg}
+    \begin{figure} [!h]
+    \caption{Thesis Outline} \label{fig:fig2}
+    \end{figure}
+\end{center}
+
+\section{Literature Review}
+
+\subsection{Blackjack rules} \label{sec:blackjack_rules}
+\subsubsection{Game settings}
+The objective of blackjack is to get a hand total higher than the dealer without busting\footnote{busting: exceeding a score of 21}. Blackjack is a casino banked game allowing players to compete against the house rather than each other. The game of blackjack consists of a dealer and from 1 to 7 players. A standard deck of 52 cards was initially used for blackjack. After the announcement of the first winning strategies, casinos implemented countermeasures such as varying the deck size, making card counting harder \citep{Ed_Thorp}.
+
+\subsubsection{Deck and cards}
+Nowadays, casinos in Nevada, Las Vegas and United States use between 1 to 8 decks \citep{Wong}. Cards 2 to 10 are worth their face values. Jacks, Queens and Kings are counted as 10 and ace is worth 1 or 11, whichever the most favourable to the player. A hand with an Ace valued as 11 is a "soft hand" and all other hands are considered "hand hands". The distinction between soft and hard hands is important as the strategy for a given total of a soft hand can differ from the same total holding a hard hand. This distinction is better understood by analysing the strategy tables provided in Section \ref{sec:appendix} of Appendix. 
+
+\subsubsection{The deal}
+At the beginning of each round/play, the dealer shuffles the pack of cards. The player then cuts the pack into half. Before the start of any hand, each player places an initial bet based on their own bankroll and on the minimum-maximum bet set by the casino. The players are next dealt with two cards face up each and the dealer also gets two cards, one face up and one face down (called a hole card). The dealing and drawing of cards occur in a clockwise fashion starting at the left most player of the dealer.
+
+\subsubsection{Actions}
+The player will look at his hole card and take actions requested from the dealer. After all players have finished their actions per round, the dealer turns his face down card up and decide onto which action to take. The challenge posed to the player is choosing the optimal action at each hand, given his current total hand and the dealer's face up card. The possible actions at play include standing, hitting, splitting, doubling down and insurance.
+
+\begin{enumerate}
+    \item \textbf{Standing}: A player might choose to stand, i.e. take no additional cards if doing so is unattractive for his  current hand total. 
+    \item \textbf{Hitting}: Hitting is when a player asks for another card from the dealer. A player is allowed to hit as many time as long as he does not bust.
+    \item \textbf{Splitting}: A player might even choose to separate two cards of the same face value and make another bet of equal size as the initial bet made and play each card as a separate hand. For each hand, the player will have the option of hitting/standing or doubling down again. We however, for simplicity purposes do not consider the case where the layer is allowed to re-split for having cards of the same value after the first split.
+    \item \textbf{Doubling down}: Another option available to the player is to double his bet in the middle of a hand. The player then has to draw one and only one card from the dealer.
+    \item \textbf{Insurance}: A further option available is insurance. Under insurance, an additional wager by the player is allowed on the condition the dealer has an Ace as face up card. The player should generally expect the dealer to have a blackjack to take insurance.
+\end{enumerate}
+
+\subsubsection{Why not take insurance?}
+Insurance is a side bet offered to the player that the dealer has a 10 point hole card when the dealer's face up card is an ace. To take insurance, the player bets half of his initial wager. The player is only payed 2 times his initial bet if the dealer has a natural.  It has been recommended by \citep{insurance}, to never take insurance. To explain this claim, 6 pack of cards were assumed, making a total of 312 cards. Indices +2 and -1 are also assumed for the player winning and losing. It is also assumed that all players only have knowledge of cards already on the table. Table \ref{tab:count1} below helps to explain the idea of insurance for which the player does not have a blackjack.   
+
+\begin{table}[H]
+\begin{tcolorbox}[tab2,tabularx={|m{2.5cm}| m{2.5cm}|m{2.5cm}|m{2.5cm}}]
+ \textbf{Dealer's Event} & \textbf{Pays} & \textbf{Probability} & \textbf{Expectation} \\\hline\hline
+10 & +2 & 96/311 & 61.74\% \\ \hline
+A-9 & -1 & 215/311 & -69.13\% \\\hline
+\end{tcolorbox}
+\caption{Insurance: Player with no natural} \label{tab:count1}
+\label{news}
+\end{table}
+
+The above probabilities are based off 311 cards as we already know the face up of the dealer (An ace). Given a total of sixteen 10 valued per deck, we have a total of 96 10-point cards in the 6 pack of decks. The rest are for cards (A-9), yielding the above probabilities. We compute the expected winnings and losses of the player for this case. Considering the sum of the above two expectations, this means for every dollar bet on insurance, a player can expect to lose 7.4\% of his insurance bet. This is a pretty high house advantage \citep{insurance} and is not recommended. 
+\vspace{0.2cm}
+
+We now consider the case where the player has a blackjack, the dealer's face up card is an ace and the player refuses to take insurance. Table \ref{tab:count} helps in explaining this case. 
+
+\begin{table}[H]
+\begin{tcolorbox}[tab2,tabularx={|m{2.5cm}| m{2.5cm}|m{2.5cm}|m{2.5cm}}]
+ \textbf{Dealer's Event} & \textbf{Pays} & \textbf{Probability} & \textbf{Expectation} \\\hline\hline
+10 & 0 & 95/309 & 0\% \\ \hline
+A-9 & 1.5 & 214/309 & 103.888\% \\\hline
+\end{tcolorbox}
+\caption{Insurance: Player with natural} \label{tab:count1}
+\label{news}
+\end{table}
+
+The probabilities are now based off 309 cards given two of the player's and one of the dealer's cards are now known. If both the dealer and player ends up with a blackjack, it is a tie. If the dealer has a 10 as his hole card, the player can expect a winning of 0 as even if the dealer has a blackjack, the game will end in a tie. Alternatively, if the dealer does not have a 10 as his hole card, the player can expect a gain of 1.5 times his initial bet. Adding the two expectations implies a player can expect a gain of 103.88\% for not taking insurance at every dollar. The point is to not take insurance again here. The reason as to why insurance is again not recommended here, is that, if a player were to take insurance, his expectation would be 0 for also having a blackjack. The player refusing insurance however gets 103.8\% of his initial bet. 
+\vspace{0.2cm}
+
+There are however exceptions to consider for which insurance might play in the player's advantage. If a player is card counting and knows how "10 rich" remaining cards in a deck is, it might be a good idea but \citep{insurance} still discourages taking insurance anytime. 
+
+\subsubsection{Dealer stands or hits on soft 17}
+After each player took a respective action, the dealer turns up his hole card and decides whether to draw or stick depending on the rule set by the casino. Some casinos require the dealer to stand for having a score of 17 or above from his first two cards while other casinos allow the dealer to draw more cards even a total of 17 or more has already been achieved. We also note that a dealer should count his Ace as an 11 it his first two cards bring up a total of 17 or more for treating Ace as 11. The dealer then based off the casino can know whether he can stand or draw more cards. In this project, we consider and compare both cases where the dealer stands or hits on a soft 17. 
+
+\subsubsection{Natural}
+A starting hand of an Ace and a 10-valued card is called a blackjack or natural and beats any other hands even a hand total of 21 but not a blackjack.
+ 
+\subsubsection{Settlement}
+If the player and the dealer both have the same total hand value, it is a tie/draw and no money is exchanged. If neither the player nor the dealer busts, the one with the higher and more favourable hand value wins the bet. If the player busts, the player loses the bet, irrespective of the dealer's score. Assuming blackjack pays 3:2, the player receives 1.5 times his initial bet for having a blackjack. Cases other than for a blackjack, the amount settled between the player and dealer is always equal the total bet made by the player for that round. 
+
+\subsection{Basic Strategy}
+
+For purpose of this project, we follow the blackjack basic strategy, initially determined by \citep{BaldwinOptimum}. The research conducted by \citep{BaldwinOptimum} consisted of deriving the strategy maximising a player's mathematical expectation given his strategic problems. A basic strategy is simply a proper playing decision for every possible hand against the dealer \citep{Ed_Thorp}. Every possible combination of the player hands' total and dealer's face up card has a mathematically correct play and these can be summarised in a Strategy Table framework. The optimal action per each round therefore depends on the player's current hand total and the dealer's face up card \citep{Wong}. 
+
+
+\subsubsection{The basic "Decision Equation"}
+A mathematical expression was derived by \citep{BaldwinOptimum} yielding a general solution to the player's problem of standing or drawing additional cards given a current hand total. We consider two types of hands for the player: player's total x having one unique value not exceeding 21 (hard hand) and player's total having two values not exceeding 21 (soft hand). We note that hard and soft hands each require a separate strategy. We define some notations. 
+
+\begin{enumerate} [label=(\roman*)]
+    \item \textbf{x}: Player's hand total on first 2 cards
+    \item \textbf{D}: Value of dealer's face up card. $ D = 2, 3, \ldots, 10, (1,11). $
+    \item \textbf{M(D)}: An integer such that if the dealer's face up card is D and the player's x is unique and less than M(D), the player should draw and otherwise stand, i.e. stand when $x(unique) >=  M(D)$.
+    \item \boldsymbol{E_{d,x}}: Expectation of a player with a hand total of x drawing exactly one card
+    \item \boldsymbol{E_{s,x}}: Expectation of a player with a hand total of x standing.
+    \item \boldsymbol{T}: Final total obtained by the dealer.
+    \item \boldsymbol{J}: Total obtained by player on drawing one card.
+\end{enumerate}
+
+The set of integer values taken by M(D) are known as the minimum standing numbers for hard (unique) hands. We note that M*(D) is defined in the same way as M(D), for soft hands. The intuition here is such that if it is a good strategy to stand on a given hand total, it is a good strategy for him to stand on higher totals.
+\vspace{0.2cm}
+
+\textbf{\underline{Step 1}}: \textbf{M(D)} 
+\vspace{0.1cm}
+
+We wish to compare the mathematical expectation of 2 players: Player 1 with M(D) = x and Player 2 with M(D) = x+1 where x values not exceeding 21. This comparison is equivalent to comparing $\boldsymbol{E_{s,x}}$ to $\boldsymbol{E_{d,x}}$ for hard hands. In this case, Player 1 stands and player 2 draws exactly one card. For soft hands, however, we use the result that if $\boldsymbol{E_{s,x}}>\boldsymbol{E_{d,x}}$, the Player 2 draws one or more cards on a hand total of x and Player 1 stands. 
+\vspace{0.4cm}
+
+\textbf{\underline{Step 2}}: $\boldsymbol{E_{s,x}}$
+\vspace{0.1cm}
+
+We consider $\boldsymbol{E_{d,x} - E_{s,x}}$, a non-increasing function of x. $\boldsymbol{E_{d,x} - E_{s,x} <  0}$ relates to the smallest integral value of x representing M(D). This intuition holds for both hard and soft hands. We note that M(D) is non-increasing in almost all cases and only increases with x for some exceptions, as "pathological" situations. Considering the case where T, the dealer's total exceeds 21 or is less than x, i.e. $T>21$ or $T<x$, the player standing on a score x wins the bet (one unit gain). If $T=x$, it is a tie and no money is exchanged and if $ x < T <= 21$, the dealer wins the bet (one unit gain). $\boldsymbol{E_{s,x}}$ is then given by:
+
+\begin{equation}
+    \begin{aligned}
+E_{s, x} &=P(T>21)+P(T<x)-P(x<T \leqq 21) \\
+&=2 P(T>21)-1+2 P(T<x)+P(T=x)
+\end{aligned}
+\end{equation}
+
+\textbf{\underline{Step 3}}: $\boldsymbol{E_{d,x}}$
+\vspace{0.1cm}
+
+We now attempt to derive an expression for $E_{d,x}$. We introduce a new variable J, defined to be the total obtained by the player upon drawing one card. We consider the case where $T>=17$. Assuming $J < 17$, the player loses at any value at T and wins when $T>21$. 
+\*
+\begin{enumerate}
+    \item For $\boldsymbol{J<17}$, the player's expectation is:
+    
+\begin{equation}
+    P(T>21)-[1-P(T>21)]=2 P(T>21)-1
+\end{equation}
+
+    \item For $\boldsymbol{17<=J<=12}$, the player's expectation is:
+
+\begin{equation}
+    P(T>21)+P(T<J)-P(J<T<=21) 
+\end{equation}
+
+    \item For $\boldsymbol{J>21}$, the player's mathematical expectation is -1.
+\end{enumerate}
+\vspace{0.2cm}
+
+We note the small errors introduced to make the assumption of independence between J and T hold. $E_{d,x}$ is then given by: 
+
+\begin{equation}
+    \begin{aligned}
+E_{d, x}=&P(J<17)[2 P(T>21)-1]-P(J)>21) \\
+&+\sum_{j=17}^{21} P(J=j)[P(T>21)+P(T<j)-P(j<T \leqq 21)]
+\end{aligned}
+\end{equation}
+
+Subtracting $E_{s,x}$, from eq 4, we have:
+
+\begin{equation}
+    \begin{aligned}
+E_{d, z}-E_{s, x}=&-2 P(T<x)-P(T=x)-2 P(T>2 \mathrm{I}) P(J>21) \\
+&+2 P(T<J \leqq 2 \mathrm{I})+P(T=J \leqq 21)
+\end{aligned}
+\end{equation}
+
+(5) represents the general form of our decision equation. 
+\vspace{0.4cm}
+
+\textbf{\underline{Step 4}}: $\boldsymbol{E_{d,x} - E_{s,x}}$ for different x values when $T>=17$
+\vspace{0.1cm}
+
+\noindent
+\begin{enumerate}
+    \item For $\boldsymbol{x<17}$, the first two terms of eq 5 are zero. We also note that $P(J>21)$ is also zero for $x(unique)<12$ and all of soft x values. Then, $E_{d, x}-E_{s, x} \geqq 0$ for $x(unique)<12$ and $x(soft )<17$ and $M(D)>11$ and $M^{*}(D)>16$ for all $D$.
+    
+    \item For $\boldsymbol{12<=x<=16}$, the first two terms of eq 5 are zero and thus:
+
+\begin{equation}
+    E_{d, x}-E_{s, x}=-2 P(T>21) P(J>21)+\sum_{t=17}^{21} P(T=t)[2 P(t<J \leqq 21)+P(J=t)]
+\end{equation}
+
+We introduce two further assumptions about the probability distributions of J-x and J-x-i such that:
+
+\begin{equation}
+    P(J-x=10)=4 / 13 
+\end{equation}
+
+\begin{equation}
+        P(J-x=i)=1 / 13 i=2,3, \cdots, 9,(1,11)
+\end{equation}
+
+The equations 7 and 8 imply that each card in the deck is equally likely to be drawn for the 52! permutations. From these two assumptions, we get:
+
+\begin{equation}
+    \begin{array}{c}
+P(J>21)=1 / 13(x-8) \text { for } x \text { (unique) } \geqq 12, \text { and } \\
+P(t<J \leqq 21)=1 / 13(21-t), \quad P(J=t)=1 / 13 \text { for } 17 \leqq t \leqq 21
+\end{array}
+\end{equation}
+
+Substituting the above two equations in 6 gives:
+
+\begin{equation}
+    E_{d, x}-E_{s, x}=-2 / 13(x-8) P(T>21)+\sum_{t=17}^{21} 1 / 13(43-2 t) P(T=t)
+\end{equation}
+
+We note it is unnecessary to compute $E_{d, x}-E_{s, x}$ for all $12<=x<=16$. Given the function $E_{d,x} - E_{s,x}$ is non-increasing, we can set $E_{d,x} - E_{s,x} = 0$ and find one solution, $x = x_{0}$. We have:
+
+\begin{equation}
+    x_{0}=8+\frac{\sum_{t=17}^{21}\left(21 \frac{1}{2}-t\right) P(T=t)}{P(T>21)}
+\end{equation}
+
+\item For $\boldsymbol{x_{0}<12}$, M(D) = 12, for $\boldsymbol{x_{0}>16}$,$ M(D)>16$ and for $\boldsymbol{12<=x_{0}<=16}$, $M(D)=\left[x_{0}\right]+1$, where [z] is defined to be the largest integer not greater than z. From equation 11 and the third result discussed, the greater the probability of the dealer busting $P(T>21)$, the lower the player's standing number. 
+
+\item For $\boldsymbol{x(unique)=17}$:
+
+\begin{equation}
+    E_{d, 17}-E_{s, 17}=-18 / 13 P(T>21)-5 / 13 P(T=17)+\sum_{t=18}^{21} 1 / 13(43-2 t) P(T=t)
+\end{equation}
+
+For $T>=17$, no further evaluation for the other x values is required for hard hands as it will be shown that $M(D)<=17$ such that $E_{d,x} - E_{s,x}<0$ for all D. 
+
+\item For $\boldsymbol{x(soft)=17}$:
+
+\begin{equation}
+    E_{d, 17}-E_{s, 17}=-1 / 13 P(T=17)+\sum_{t=18}^{21} 1 / 13(43-2 t) P(T=t)
+\end{equation}
+\end{enumerate}
+
+\subsubsection{Evaluation of the dealer's probability}
+In order to calculate $x_{0}$ and expressions for $E_{d,17}-E_{s,17}$ for both hard and soft hands, the dealer's probabilities need to be evaluated. We compute the dealer's probabilities in three stages:
+\vspace{0.4cm}
+
+\textbf{\underline{Stage 1}}: Evaluating $\boldsymbol{P(T_{3}=v)}$
+\vspace{0.1cm}
+
+The probability the dealer obtains a score value of v on his first three cards for each D value is given by $P(T_{3}=v)$. We get the following table on computing the probabilities:
+    
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+& \textbf{17}  &  \textbf{18}  &  \textbf{19} &  \textbf{20}  &  \textbf{21}  &   \textbf{$>$21} \\
+\hline
+\textbf{$P(T=t)$}: \textbf{Exact}  & 0.166 & 0.106 & 0.107 & 0.100 & 0.978 &  0.421 \\
+\hline
+\textbf{$P(T=t)$}: \textbf{Approximation} & 0.167 & 0.107 & 0.108 & 0.101 & 0.098 & 0.417 \\
+\hline
+\end{tabular}
+\end{table}
+
+We note the errors for approximated probabilities in the above table being than 1\%, yielding a maximum error of 2\% for the second term of expression $x_{0}$ given by equation 11. A study shows that existing errors in $x_{0}$ might only affect M(D) for $D=10$. Using the assumption that one ten-valued card being withdrawn from the deck, we have $M(10)=17$ for which $x_{0}>16$. Furthermore, it is shown that an error of 1\% in $P(T=t)$ will not affect the conclusions that $M(D)<=17$ and M*(D)$>17$
+\vspace{0.3cm}
+
+\textbf{\underline{Stage 2}}: Evaluating $\boldsymbol{P\left(T=t / T_{p}=t_{p}\right)}$
+\vspace{0.1cm}
+
+The probability the dealer obtains a final total value of $t(t>=17)$ given a partial total of $t_{p}(t_{p}<17$ is given by $P\left(T=t / T_{p}=t_{p}\right)$. The computation of conditional probabilities is of use in the third stage.
+\vspace{0.3cm}
+
+\textbf{\underline{Stage 3}}: Evaluating $\boldsymbol{P(T=t)}$ using results from Stage 2
+\vspace{0.1cm}
+
+We use the fact that $P(T=t)=P\left(T_{3}=t\right)+\sum_{j<17} P\left(T_{3}=j\right) P\left(T=t / T_{p}=j\right)$ and generate the following table:
+\vspace{0.2cm}
+
+$\begin{array}{|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{7}{|c|} {\textbf{\mathrm{t}}} \\
+\hline {\textbf{\mathrm{D}} & 17 & 18 & 19 & 20 & 21 & 21^{*} & >21 \\
+\hline 2 & 0.141781 & 0.134885 & 0.131432 & 0.123829 & 0.119581 & 0.000000& 0.348492 \\
+\hline 3 & 0.133533 & 0.133052 & 0.126197 & 0.122563 & 0.114903 & 0.000000 & 0.369751 \\
+\hline 4 & 0.132206 & 0.116037 & 0.122553 & 0.117930 & 0.114292 & 0.000000 & 0.396983 \\
+\hline 5 & 0.121374 & 0.124511 & 0.117753 & 0.105446 & 0.107823 & 0.000000 & 0.423092 \\
+\hline 6 & 0.167625 & 0.107233 & 0.108018 & 0.101260 & 0.098364 & 0.000000 & 0.417499 \\
+\hline 7 & 0.372743 & 0.139017 & 0.077841 & 0.079409 & 0.073437 & 0.000000 & 0.257552 \\
+\hline 8 & 0.131202 & 0.363359 & 0.129634 & 0.068457 & 0.070026 & 0.000000 & 0.237322 \\
+\hline 9 & 0.122256 & 0.104217 & 0.357550 & 0.122256 & 0.61079 & 0.000000 & 0.232643 \\
+\hline 10 & 0.114756 & 0.113186 & 0.114756 & 0.328873 & 0.036324 & 0.078431 & 0.213674 \\
+\hline(1,11) & 0.128147 & 0.131824 & 0.129716 & 0.131284 & 0.051284 & 0.313725 & 0.114560 \\
+\hline
+\end{array}$
+\vspace{0.2cm}
+
+From the above table, 21* is the case of a natural and this table relates to the case where the dealer does not have a blackjack. 
+\vspace{0.1cm}
+
+We however note that the dealer's order of decisions differs when he has a $D=10$ or $D=(1,11)$. If the dealer has either of the D's as face up card, he checks his hole card and verify whether he has a blackjack. If he has a natural, the dealer wins the bet and the game proceeds. As such, for $D=10$ or $D = (1,11)$ in the case the dealer does not have a natural, important probabilities are the conditional probabilities of a final score of $T=t$ given the dealer does not obtain a natural. These probabilities are given by: 
+\vspace{0.2cm}
+
+$\begin{array}{|c|c|c|c|c|c|c|c|}
+\hline & \multicolumn{7}{|c|} {\textbf{\mathrm{t}}} \\
+\hline \textbf{\mathrm{D}} & 17 & 18 & 19 & 20 & 21 & 21^{*} & >21 \\
+\hline 10 & 0.124522 & 0.122819 & 0.124522 & 0.356862 & 0.39415 & 0.000000 & 0.231859 \\
+\hline (1,11) & 0.186728 & 0.191299 & 0.189015 & 0.191299 & 0.074728 & 0.000000 & 0.166930 \\
+\hline
+\end{array}$
+\vspace{0.2cm}
+
+\subsubsection{Analysis for special situations}
+In this section, we consider the case of special situations: soft hands, doubling down and splitting. 
+\vspace{0.2cm}
+
+\textbf{\underline{Soft hands}}:
+Here, we begin by defining the following notation: 
+
+\begin{enumerate} [label=(\roman*)]
+    \item $\boldsymbol{P\left(H=h / H_{p}=h_{p}\right)}$, the player's conditional probability of obtaining a total
+    \item  $\boldsymbol{h\{h \geqq M(D)\}$, a partial total of $h_{p}\{h_{p}(unique)<M(D), h_{p}(soft)<M*(D)\}}$
+\end{enumerate}
+
+The player draws or stands following a respective M(D) and M*(D). We note that separate computations were required for different D such that: 
+\vspace{0.2cm}
+
+$
+\begin{array}{|c|c|c|}
+\hline \mathbf{D} & \mathbf{M}(\mathbf{D}) & \mathbf{M}^{*}(\mathbf{D}) \\
+\hline 2,3 & 13 & 18 \\
+\hline 4,5,6 & 12 & 18 \\
+\hline 7,8,(1,11) & 17 & 19 \\
+\hline 9,1 & 71 & 19 \\
+\hline
+\end{array}
+$
+\vspace{0.2cm}
+
+For the case of soft hands, $M*(D)>17$. We now need to compare the mathematical expectation of the two players with $M*=x$ and $M*=x+1$ for Player 1 and 2 respectively. Considering a situation of a soft x, Player 1 stands and Player 2 draws as long as his total does not exceed M(D). To analyze the two players' mathematical expectations, we could compare $E_{s,x}$ to $E_{d*,x}$, the expectation of a player drawing on a soft total of x and standing or drawing again based off M(D). Using the rule that $E_{s, k}=-1$ for $k>21$, we have: 
+
+\begin{equation}
+    E_{d^{*}, x}=\sum_{j \geq M} P(J=j) E_{s, j}+\sum_{j<M} P(J=j) \sum_{h \geqq M} P\left(H=h / H_{p}=j\right) E_{s, h}
+\end{equation}
+
+Given, $E_{s,19} > E_{d^{*},x}$ for all D, we do not evaluate $E_{s,x}$ and $E_{d,x}$ for $X>=20$.
+\vspace{0.4cm}
+
+\textbf{\underline{Doubling down}}:
+A player doubling down draws one and only one card from the dealer ad doubles his initial bet. The player's expectation is $2E_{d,x}$. In determining whether the player should double down, $2E_{d,x}$ should be compared to $E_{M,M^{*}}$, the player's expectation on a total of x from following the drawing strategy of M followed by $M^{*}}$. $E_{M,M^{*}}$ is given by:
+
+\begin{equation}
+    E_{M, M^{*} ; x}=\left\{\begin{array}{l}
+E_{\varepsilon, x} x(\text { unique }) \geqq M \text { or } x(\text { soft }) \geqq M^{*} \\
+\sum_{h \geq M} P\left(H=h / H_{p}=x\right) E_{s, h} \text { otherwise }
+\end{array}\right.
+\end{equation}
+
+The player will only double down if $\text { 2 } E_{d, x}-E_{M, M^{*} ; x}>0$. However $E_{M, M^{*}} ; x \geqq E_{d, x}$. Therefore:
+
+\begin{equation}
+    2 E_{d, x}-E_{M, M^{*} ; x} \geqq 2 E_{d, x}-E_{d, x}=E_{d, x}
+\end{equation}
+
+From equation 16, it can be shown that doubling down is not a wise strategy for $x(unique)>11$ or $x(unique)<8$ for all D and $x(soft)<17$ for $D>6$ and $D=(1,11)$. 
+\vspace{0.4cm}
+
+\textbf{\underline{Splitting pairs}}:
+A different analysis is required when splitting a pair of y's for every combination of y and D. We note in this case that a player might split a pair and subsequently double down. A player will split his pairs if $E_{\text {split }, y}>E_{\text {no- split }, y}$ for which:
+
+\begin{equation}
+    E_{\text {no-split }, y}=\left\{\begin{array}{ll}
+2 E_{d, 2 y} & 2 y \in X \\
+E_{M, M^{*} ; 2 y} & 2 y \nsubseteq X
+\end{array}\right.
+\end{equation}
+
+\begin{equation}
+    \frac{1}{2} E_{\mathrm{split}, y}=\sum_{j \in X} P(J=j) 2 E_{d, j}+\sum_{j \notin x} P(J=j) E_{M, M^{*} ; j}
+\end{equation}
+
+For the case where $y=(1,11)$, the player who splits is allowed to draw only one card (hit once) and cannot double down. As such, for $y=(1,11)$, $\frac{1}{2} E_{\mathrm{split},(1, \mathrm{I})}=\sum_{\mathrm{all} j} P(J=j) E_{\mathrm{s}, j}$
+
+\subsubsection{Mathematical Expectation of player}
+The mathematical expectation of the player is given by:
+
+\begin{equation}
+    E(W)=1 / 13 \sum_{D \neq 10} E\left(W_{D}\right)+4 / 13 E\left(W_{10}\right)
+\end{equation}
+
+In obtaining $E\left(W_{D}\right)$, the probabilities of multiple hands formed by the player two cards are computed. For the case where $D=10$ or $D = (1,11)$ and the dealer has a blackjack:
+
+\begin{equation}
+    E\left(W_{D}\right)=-1[1-P( the hole cards form a natural)]
+\end{equation}
+
+For all other cases, $E\left(W_{D}\right)$ is given by the sum of the following 4 terms:
+
+\begin{enumerate}
+    \item $\frac{1}{2}$ P(the hole cards form a natural)
+    \item $\sum_{y \in Y} P\left(\right.$ the hole cards are a pair of $\left.y^{\prime} s\right) E_{\text {split }, \nu}$
+    \item $\sum_{j \in X} P($ the hole cards total $j) 2 E_{d, j}$
+    \item $\sum_{j \notin x} P$ (the hole cards total $j$ ) $E_{M, M^{*}, j}$
+\end{enumerate}
+
+\subsubsection{The Optimum Strategy}
+The player's basic decisions when playing blackjack are: when to draw or stand, when to double down and when to split. 
+
+We use the notations previously defined to explain the optimum strategy.
+
+\begin{enumerate} [label=(\roman*)]
+    \item D the value of the dealer's face up card  
+    \item M(D) An integer such that if the dealer's face up card is D and the player's x is unique and less than M(D), the player should draw and otherwise stand
+    \item M*(D) M(D) for soft hands 
+\end{enumerate}
+
+The optimum strategy by \cite{BaldwinOptimum} is presented in a tabular form adapted by \cite{mich} as shown below:
+
+\begin{center}
+    \includegraphics[width = 180mm, scale=0.8]{Strategy Table.jpg}
+    \begin{figure} [!h]
+    \caption{Strategy Table 1} \label{fig:fig13}
+    \end{figure}
+\end{center}
+
+
+The above two tables are the basic strategy tables adapted by \citep{mich}. To use the basic strategy, a player looks up his hand along the left vertical edge (x) and the dealer's face up card along the top (D). In both cases A stands for ace, taking 1 or 11 as numerical value. From top to bottom are the unique totals, soft totals and splittable hands. There are two charts depending on whether the dealer hits or stands on soft 17.
+\vspace{0.2cm}
+
+We also note that the player's overall expectation following the basic strategy is -0.006 for this particular setting. The player's expectation conditioned on the dealer's face up card however suffers considerable variability. This is shown by the table below: 
+\vspace{0.2cm}
+
+$
+\begin{array}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline \textbf{\mathrm{D}} & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & (1,11) \\
+\hline \textbf{\mathrm{E}(\mathrm{W}} \mathrm{d}) & 0.090 & 0.123 & 0.167 & 0.218 & 0.230 & 0.148 & 0.056 & -0.043 & -0.176 & -0.363 \\
+\hline
+\end{array}$
+
+\subsection{Counting cards}
+\subsubsection{Hi-Low Method}
+\textbf{\underline{Kelly Criterion}}
+\newline
+If starting with $X_{0}$ capital we bet an amount $B_t$ at decision time increment $i$, given some fraction $f$, according to the rule:
+\begin{equation}
+B_{i}=f X_{i-1} \text { where } 0 \leq f \leq 1. \label{eqn:4}
+\end{equation}
+After $n$ trials our capital is then:
+\begin{equation}
+X_{n}=X_{0}(1+f)^{S}(1-f)^{F}n. \label{eqn:5}
+\end{equation}
+Here $S$ and $F$ are the number of successes and failures, respectively, in $n$ trials,where $S+F=n$.
+
+
+Ruin is re-interpreted to mean that for some arbitrary small positive $\epsilon$:
+\begin{equation}
+\lim _{n \rightarrow \infty}{\Pp\left[X_{n} \leq \epsilon\right]}=1. \label{eqn:6}
+\end{equation}
+
+\begin{table}[H]
+\begin{tcolorbox}[tabularx*={\arrayrulewidth0.6mm}{X|X|},fonttitle=\bfseries\large,fontupper=\normalsize\sffamily,
+colback=white!10!white,colframe=black!40!,
+coltitle=black,center title,toprule=1mm]
+\centerline{\textbf{Card}} & \centerline{\textbf{Value Assigned}} \\\hline\hline
+%\vspace{0.1mm}  \centerline{10 Jul 17} &  dGFKD  & Basic Materials \\
+ %                     &   $\boldsymbol{\cdot}$ Introduce parfors    & 
+%\\\hline
+\vspace{0.1mm}  \centerline{A-9} &         \centerline{+4}  \\\hline
+\vspace{0.1mm}  \centerline{10} &           \centerline{-9}  &  \\\hline
+\end{tcolorbox}
+\caption{Ten Count System} \label{tab:count}
+\end{table}
+
+\begin{table}[H]
+\begin{tcolorbox}[tabularx*={\arrayrulewidth0.6mm}{X|X|},fonttitle=\bfseries\large,fontupper=\normalsize\sffamily,
+colback=white!10!white,colframe=black!40!,
+coltitle=black,center title,toprule=1mm]
+\centerline{\textbf{Card}} & \centerline{\textbf{Value Assigned}} \\\hline\hline
+%\vspace{0.1mm}  \centerline{10 Jul 17} &  dGFKD  & Basic Materials \\
+ %                     &   $\boldsymbol{\cdot}$ Introduce parfors    & 
+%\\\hline
+\vspace{0.1mm}  \centerline{2,3,4,5,6} &       \centerline{+1}  \\\hline
+\vspace{0.1mm}  \centerline{7,8,9} &           \centerline{0}  &  \\\hline
+\vspace{0.1mm}  \centerline{10,J,Q,K,A} &      \centerline{-1}  &  \\\hline
+\end{tcolorbox}
+\caption{Hi-Lo System} \label{tab:count}
+\end{table}
+\subsubsection{Other counting rules}
+
+\subsection{Reinforcement Learning}
+
+\subsubsection{The Reinforcement Learning problem}
+Reinforcement learning is considered a third machine learning paradigm, besides supervised and unsupervised learning \citep{Sutton}. Reinforcement learning problems involve relying on responses from an environment to learn and more specifically to map situations to actions \citep{Charles_q}. The responses under reinforcement learning techniques take the form of rewards to guide the agent in developing his policy \cite{Sutton}. The aim is to maximise a numerical reward signal. Reinforcement learning problems are sometimes referred to as closed-loop problems \citep{Sutton} as actions taken from the learning agent later influence inputs. In addition, the learner in a RL problem is not explicitly told which actions to take next and must instead try out actions yielding the highest reward at each time step. Another key feature of RL relative to other learning methods is that it considers the whole problem of a goal-directed agent rather than only sub-problems. 
+
+\subsubsection{Elements of Reinforcement Learning}
+In this section, we define the elements of a reinforcement learning system
+
+\begin{enumerate} [label=(\roman*)]
+    \item \textbf{Environment}: The environment is a simulation allowing for interactions (actions) among agents.
+    \item \textbf{Agent}: The agent must have goal(s) relating to the state of the environment, try a variety of actions and choose those actions yielding higher rewards. The agent however faces a trade-off between exploration and exploitation \citep{Sutton}. The agent exploits what is already known to obtain a higher reward but consequently also explores possibilities or states.
+    \item  \textbf{Policy}: A policy helps in defining the agent's behaviour at a given time and is a mapping of states to actions when in those states \citep{Sutton}. In general, policies may be stochastic or may be as easy as lookup table.
+    \item \textbf{Reward signal}: The reward signal helps to define the goal in a RL problem. At each time step, the agent is sent a single number, a reward. The agent's objective is to maximize his total rewards in the long run. It is noted that the reward sent to the agent at any given time depends on the agent's current action and state of the environment. The agent can influence the reward signal only through his actions. Reward signal is thus the primary basis for altering a policy \citep{Sutton}.
+    \item \textbf{Value function}: Values advise the long-term worthiness of states after taking into account, the states to follow by the agent and the rewards attached to each of those states. 
+    \item \textbf{Model}: The model of an environment will mimic the behaviour of the environment allowing inferences to be drawn about the environment's future behaviour. 
+\end{enumerate}
+
+\textbf{Note}: There can be no values without rewards and the sole purpose of estimating values is to achieve higher reward \citep{Sutton}. We are however more concerned with values when making decisions and seek actions that bring the states to the highest value and not highest reward.   
+
+\subsubsection{Finite Markov Decision Processes}
+
+\textbf{Agent-environment interface}:
+\*
+
+The learner or decision maker is the agent and he interacts with the environment. The interaction takes the form of actions and the environment responds to those actions and presents new situations to the agent. The environment in addition sends a single numerical value (a reward) to the agents aiming to maximize it. We now give a formal definition of the agent-environment interface:
+
+\begin{enumerate} [label=(\roman*)]
+    \item Both the agent and environment interact with each other at a sequence of discrete time steps, t=0,1,2,3, \ldots.
+    \item At each time step, the agent has an idea of some representation of the environment state, $S_{t} \in \mathcal{S}$. $\mathcal{S}$ represents all possible states. 
+    \item Based off all possible states, the agent selects an action, $A_{t}  \in \mathcal{A}\left(S_{t}\right)$ where $\mathcal{A}\left(S_{t}\right)$ represents the set of available actions in state $S_{t}$. 
+    \item  For the next time step, the agent moves to a new state $S_{t+1}$ and receives a numerical reward $R_{t+1} \in \mathcal{R} \subset \mathbb{R}$
+\end{enumerate}
+
+
+At each time step, a mapping from states to probabilities of selecting is done by the agent. This mapping is called the agent's policy denoted by $\pi_{t}$ where $\pi_{t}(a \mid s)$ denotes the probability of taking action $A_{t} = a$ given the agent is in state $S_{t} = s $.
+
+The diagram below depicts the agent-environment interaction framework in reinforcement learning.
+
+
+\begin{center}
+    \includegraphics[width = 120mm, scale=0.8]{Framework.jpg}
+    \begin{figure} [!h]
+    \caption{Agent-environment interaction framework} \label{fig:fig2}
+    \end{figure}
+\end{center}
+
+The above framework shows that the reinforcement learning problem can be summarized through three signals passing through the agent and environment: one signal to indicate the choices (actions) of the agent, another signal to indicate the basis of choices (states) of the agent and a last signal indicating the agent's goal (reward structure). 
+\vspace{0.2cm}
+
+We note that reinforcement learning approaches will specify how the agent's policy is changed resulting from experience. Also, some actions might affect how an agent chooses to think about. Rewards are computed inside the learning system but is considered external to the agent. This implies the agent knows quite a bit about the functionality of rewards but cannot be controlled/influenced by himself. The agent-environment boundary represents the agent's ability or inability of control. The agent-environment framework boundary is only determined once all states, actions and rewards have been correctly identified.
+\vspace{0.2cm}
+
+\textbf{Goals and Rewards}:
+\*
+
+In formal notations, the goal of the agent is expressed in terms of a reward passing from the environment to the agent. More specifically, at each time step, the reward is a numerical value $R_{t} \in \mathbb{R}$. The goal of the agent is to maximize his cumulative reward in the longer run. It is primary that rewards truly reflect what has been achieved by an agent. It is to be noted that agents should also only be rewarded for achieving a goal and not a sub-goal and should also have imperfect control over their final goal. 
+\vspace{0.2cm}
+
+\textbf{Returns}:
+\*
+
+We now adapt a formal definition of rewards in an agent-environment framework. We assume that rewards follow a sequence $R_{t+1}, R_{t+2}, R_{t+3}, \ldots$ for each time step t and a final time step T. The agent aims to maximize his expected return. We define the reward sequence as $G_{t}$ for which: 
+
+\begin{equation}
+    G_{t}=R_{t+1}+R_{t+2}+R_{t+3}+\cdots+R_{T}
+\end{equation}
+
+The above reward sequence can be adapted for situations where the agent-environment interaction occurs into subsequences, called episodes \footnote{episodes: called trials in literature}. After the start of an episode, this episode ends in a state known as terminal state, followed by the start and end of other states. Tasks relating to these types of episodes are called episodic tasks. We denote the non-terminal states by $\mathcal{S}$ and the terminal states by $\mathcal{S}^{+}$.
+\vspace{0.2cm}
+
+In other cases, the agent-environment interaction might not break into natural subsequences but goes on without a limit. The reward sequence formulation from Eq 21 is not appropriate as the final step would be $T=\infty$ and the return could also be infinite. To overcome this problem of infinity, the concept of {\it discounting factor} is introduced. The discount factor/rate $\gamma \text { is a parameter, } 0 \leq \gamma \leq 1$ determines the present value of future rewards. The agent facing such agent-environment interaction aims to maximize the expected discounted return given by:
+
+\begin{equation}
+    G_{t}=R_{t+1}+\gamma R_{t+2}+\gamma^{2} R_{t+3}+\cdots=\sum_{k=0}^{\infty} \gamma^{k} R_{t+k+1}
+\end{equation}
+
+\textbf{Note}: We note the effect of different values of $\gamma$ on the agent's behaviour. 
+
+\begin{enumerate} [label=(\roman*)]
+    \item If $\gamma<1$ $G_{t}$ is of a finite value as long as the sequence $\left\{R_{k}\right\}$ is bounded. 
+    \item If $\gamma=0$, the agents is mostly concerned with maximizing present and immediate rewards.
+    \item As $\gamma$ approaches 1, the agent becomes more farsighted as future rewards are now taken into account more strongly. 
+    \end{enumerate}
+
+\textbf{Markov Property}:
+\*
+
+In this section, the requirements of the state signal is explained. The "state" simply refers to the information available to the agent. A state signal should not inform the agent about all the dynamics of the environment. For example, if the player is playing blackjack, he should not be able to say which card is to be dealt from a deck next. We however note that a state signal that retains all relevant information is said to be Markov or to have the Markov Property. 
+\vspace{0.2cm}
+
+We now provide a formal definition of the Markov property with respect to the RL problem. It is assumed that the number of states and reward values are both finite. We consider how an environment responds at time $t+1$ for an action taken at time t. If the response of an environment depends on every past history, the dynamics of the environment is specified as:
+
+\begin{equation}
+    \operatorname{Pr}\left\{R_{t+1}=r, S_{t+1}=s^{\prime} \mid S_{0}, A_{0}, R_{1}, \ldots, S_{t-1}, A_{t-1}, R_{t}, S_{t}, A_{t}\right\}
+\end{equation}
+
+We note that for this case, the complete probability distribution is specified. 
+\vspace{0.2cm}
+
+If a state signal now has the Markov property, the response of the environment a time $t+1$ depends only on the state and action representations at time $t$ and the environment's dynamics is specified by: 
+\begin{equation}
+    p\left(s^{\prime}, r \mid s, a\right)=\operatorname{Pr}\left\{R_{t+1}=r, S_{t+1}=s^{\prime} \mid S_{t}, A_{t}\right\}
+\end{equation}
+
+\textbf{Note}: Intuitively, a state signal has the Markov Property if Eq 23 and 25 are equal. Also, with a Markov state, we can now predict the next state and expected next reward conditioned on the current state and action taken. Also, for a non-Markov state signal, it is appropriate to think of the actual state for the reinforcement learning problem as an approximation to the Markov state. 
+\vspace{0.2cm}
+
+\textbf{Markov Decision Processes (MDP)}:
+\* 
+
+A reinforcement learning problem satisfying the Markov property is called a MDP. A finite MDP is one RL problem with finite state and action spaces. We here formally define a finite MDP. 
+\vspace{0.2cm}
+
+Given any state s and action a, the probability of occurrence of the next possible state and reward pair is given by: 
+
+\begin{equation}
+    p\left(s^{\prime}, r \mid s, a\right)=\operatorname{Pr}\left\{S_{t+1}=s^{\prime}, R_{t+1}=r \mid S_{t}=s, A_{t}=a\right\}
+\end{equation}
+
+Using Eq 25, one can now compute the expected rewards for state-action pairs and the state-transition probabilities respectively given by: 
+
+\begin{equation}
+    r(s, a)=\mathbb{E}\left[R_{t+1} \mid S_{t}=s, A_{t}=a\right]=\sum_{r \in \mathcal{R}} r \sum_{s^{\prime} \in \mathcal{S}} p\left(s^{\prime}, r \mid s, a\right)
+\end{equation}
+
+\begin{equation}
+    p\left(s^{\prime} \mid s, a\right)=\operatorname{Pr}\left\{S_{t+1}=s^{\prime} \mid S_{t}=s, A_{t}=a\right\}=\sum_{r \in \mathcal{R}} p\left(s^{\prime}, r \mid s, a\right)
+\end{equation}
+
+\textbf{Value Functions}:
+\* 
+
+In most of reinforcement learning problems, we aim at estimating "how good" it might be for an agent to be in a given state or for taking performing an action in any particular state. The idea of "how good" is captured through the expected returns of future rewards for the agent. We note that value functions are always defined with respect to a particular policy or policies. 
+\vspace{0.2cm}
+
+\textbf{\underline{State-Value Function}}
+\*
+
+We are specifically interested in computing the value of a state s under policy $\pi$, denoted by $v_{\pi}(s)$. $v_{\pi}(s)$ represents the expected return of starting in state under a policy $\pi$. For MDPs, $v_{\pi}(s)$ is defined as the \textbf{state-value function for policy $\pi$} and given by:
+
+\begin{equation}
+    v_{\pi}(s)=\mathbb{E}_{\pi}\left[G_{t} \mid S_{t}=s\right]=\mathbb{E}_{\pi}\left[\sum_{k=0}^{\infty} \gamma^{k} R_{t+k+1} \mid S_{t}=s\right]
+\end{equation}
+
+\textbf{Note}: $\mathbb{E}_{\pi}[\cdot]$ is the expected value of a random variable given an agent follows policy $\pi$. t is considered to be of any time step. 
+\vspace{0.2cm}
+
+\textbf{\underline{Action-Value Function}}
+\*
+
+We can in addition compute the value of performing action a, being in state s under policy $\pi$, denoted by $q_{\pi}(s, a)$. $q_{\pi}(s, a)$ represents the expected return of starting from state s, performing action a and subsequently following policy $\pi$. $q_{\pi}(s, a)$ is given by: 
+
+\begin{equation}
+    q_{\pi}(s, a)=\mathbb{E}_{\pi}\left[G_{t} \mid S_{t}=s, A_{t}=a\right]=\mathbb{E}_{\pi}\left[\sum_{k=0}^{\infty} \gamma^{k} R_{t+k+1} \mid S_{t}=s, A_{t}=a\right]
+\end{equation}
+
+\textbf{Note}: The values of $v_{pi}$ and $q_{pi}$ can be both estimated from experience using Monte Carlo methods. 
+\vspace{0.2cm}
+
+\textbf{\underline{Fundamental Property of value functions}}
+\* 
+
+Value functions under RL are said to satisfy particular recursive relationships. Considering any policy $\pi$ and any state s, the following condition between the value of s and its successor holds:
+
+\begin{equation}
+    \begin{aligned}
+v_{\pi}(s) &=\mathbb{E}_{\pi}\left[G_{t} \mid S_{t}=s\right] \\
+&=\mathbb{E}_{\pi}\left[\sum_{k=0}^{\infty} \gamma^{k} R_{t+k+1} \mid S_{t}=s\right] \\
+&=\mathbb{E}_{\pi}\left[R_{t+1}+\gamma \sum_{k=0}^{\infty} \gamma^{k} R_{t+k+2} \mid S_{t}=s\right] \\
+&=\sum_{a} \pi(a \mid s) \sum_{s^{\prime}} \sum_{r} p\left(s^{\prime}, r \mid s, a\right)\left[r+\gamma \mathbb{L}_{\pi}\left[\sum_{k=0}^{\infty} \gamma^{k} R_{t+k+2} \mid S_{t+1}=s^{\prime}\right]\right] \\
+&=\sum_{g} \pi(a \mid s) \sum_{s^{\prime} . r} p\left(s^{\prime}, r \mid s, a\right)\left[r+\gamma v_{\pi}\left(s^{\prime}\right)\right]
+\end{aligned}
+\end{equation}
+
+\textbf{Note}: We note that the last line in Eq 30 is the \textbf{Bellman equation} for $v_{\pi}$. The Bellman equation expresses a relationship between the value of a state s and the values of its successor states. 
+\vspace{0.2cm}
+
+\textbf{\underline{Optimal Value Functions}}
+\*
+
+For finite MDPs, an optimal policy can be precisely defined. A policy $\pi$ is considered better or equal to a policy $\pi_{^'}$ if its expected return is greater than or equal to that of $\pi_{^'}$ for all states. $\pi >\pi_{^'}$ if and only if $v_{\pi}(s) \geq v_{\pi^{\prime}}(s) \text { for all } s \in \mathcal{S}$. Even there may be more than one optimal policy, we denote all optimal policies by $\pi_{*}$ for which they all share the same state-value functions. This is known ad the \textbf{optimal state-value function} and defined as $v_{*}(s)$, given by: 
+
+\begin{equation}
+    \begin{array}{c}
+v_{*}(s)=\max _{\pi} v_{\pi}(s) \\
+\text { for all } s \in \mathcal{S}
+\end{array}
+\end{equation}
+
+Optimal policies $q_{*}$ also have the same state-value functions and defined as: 
+
+\begin{equation}
+ \begin{array}{c}
+    q_{*}(s, a)=\max _{\pi} q_{\pi}(s, a)  \\
+\text { for all } s \in \mathcal{S}
+\end{array}
+\end{equation}
+
+Eq 32 gives the expected return of taking action a for being in state s and thereafter following an optimal policy. We can equally write $q_{^*}$ as a function of $v_{^*}$ as:
+
+\begin{equation}
+    q_{*}(s, a)=\mathbb{E}\left[R_{t+1}+\gamma v_{*}\left(S_{t+1}\right) \mid S_{t}=s, A_{t}=a\right]
+\end{equation}
+
+\textbf{Bellman equation}:
+\*
+
+We recall that the Bellman equation expresses a relationship between the value of a state s and the value of its successor states. The Bellman optimal equation for both $v_{^*}$ and $q_{^*}$  operates under the following three assumptions:
+
+\begin{enumerate} [label=(\roman*)]
+    \item The dynamics of the environment being accurately known.
+    \item Enough computational resources available to complete computation of solution. 
+    \item Markov property of states.
+\end{enumerate}
+
+\textbf{\underline{Bellman equation for $v_{^*}$}}
+\*
+
+The Bellman equation for $v_{^*}$, also known as the Bellman optimality equation is given by:
+
+\begin{equation}
+    \begin{aligned}
+v_{*}(s) &=\max _{a \in \mathcal{A}(s)} q_{\pi_{*}}(s, a) \\
+&=\max _{a} \mathbb{E}_{\pi^{*}}\left[G_{t} \mid S_{t}=s, A_{t}=a\right] \\
+&=\max _{a} \mathbb{E}_{\pi^{*}}\left[\sum_{k=0}^{\infty} \gamma^{k} R_{t+k+1} \mid S_{t}=s, A_{t}=a\right] \\
+&=\max _{a} \mathbb{E}_{\pi^{*}}\left[R_{t+1}+\gamma \sum_{k=0}^{\infty} \gamma^{k} R_{t+k+2} \mid S_{t}=s, A_{t}=a\right] \\
+&=\max _{a} \mathbb{E}\left[R_{t+1}+\gamma v_{*}\left(S_{t+1}\right) \mid S_{t}=s, A_{t}=a\right] \\
+&=\max _{a \in \mathcal{A}(s)} \sum_{s^{\prime}, r} p\left(s^{\prime}, r \mid s, a\right)\left[r+\gamma v_{*}\left(s^{\prime}\right)\right]
+\end{aligned}
+\end{equation}
+
+\textbf{\underline{Bellman equation for $q_{^*}$}}
+\*
+
+The Bellman equation for $q_{^*}$ is given by:
+
+\begin{equation}
+    \begin{aligned}
+q_{*}(s, a) &=\mathbb{E}\left[R_{t+1}+\gamma \max _{a^{\prime}} q_{*}\left(S_{t+1}, a^{\prime}\right) \mid S_{t}=s, A_{t}=a\right] \\
+&=\sum_{s^{\prime}, r} p\left(s^{\prime}, r \mid s, a\right)\left[r+\gamma \max _{a^{\prime}} q_{*}\left(s^{\prime}, a^{\prime}\right)\right]
+\end{aligned}
+\end{equation}
+
+\textbf{Note}: We take note of the following important points following the Bellman equation. 
+
+\begin{enumerate}
+    \item For finite MDPs, the Bellman equation (last line in Eq 34) has a unique solution independent of the policy adopted.
+    \item  The Bellman optimality equation is a system of N equations with N unknowns for which there are N states. Assuming the dynamics of the environment are known, the systems of equations for $v_{^*}$ can be solved using a variety of methods. We are mostly interested in solving for $q_{^*}$.
+\end{enumerate}
+
+\textbf{\underline{Finding optimal policy}}
+\*
+
+If we have $v_{^*}$, it becomes easy to find the optimal policy. For each of the states, there will a maximum observed $v_{^*}$ for one or more actions. An optimal policy is one that assigns a non-zero probability to a particular action(s). Using the optimal $v_{^*}$, actions appearing best after a one-step search will be optimal ones. 
+\vspace{0.2cm}
+
+Using $q_{^*}$ allows for an easier choice of actions. With $q_{^*}$, no one-step ahead search is required from the agent. For any given state, the agent can simply find that action maximizing $q_{*}(s, a)$. The action-value function $q_{*}(s, a)$ effectively stores results of all one-step ahead searched.  
+
+\subsubsection{Monte Carlo methods}
+In this section, we adapt the first learning method in estimating value functions and optimal policies. Monte Carlo methods only requirement is experience, i.e. sample sequences of actions, states and rewards from an actual or simulated environment. This idea of finding optimal policies is particularly interesting as no prior knowledge of the environment's dynamics is required. 
+\vspace{0.2cm}
+
+The approach under Monte Carlo methods is to solve problems based on averaging sample returns. For simplicity purposes, Monte Carlo methods are here defined for episodic tasks only. It is assumed that experiences are divided into episodes and episodes eventually come to a halt. Value estimates and policies are only changed upon the completion of an episode. For each state-action pair, Monte Carlo methods sample and average returns. In this case however, the returns for taking an action in one state is dependent on the actions to be performed in later stated for the same episode.
+\vspace{0.2cm}
+
+\textbf{Monte Carlo Prediction}:
+\* 
+
+We recall that the value of a state s is equivalent to the expected cumulative future discounted reward  (starting from s). One way of estimating the value under MC methods is to average the returns observed after visits to state s. From the law of large numbers, the average should converge to the expected value as the number or returns grow larger. The idea of the Law of large numbers is what underlines MC methods. 
+\vspace{0.2cm}
+
+Assuming we want to estimate $v_{\pi}(s)$, a \textbf{visit to s} is each occurrence of state s in an episode. It is noted that any state s can be visited multiple times for the same episode. The first time a state is visited in an episode is called the \textbf{first visit to s} and \textbf{every visit to s} simple relates to all visits s have had. The \textbf{fist-visit} MC method evaluates $v_{\pi}(s)$ by estimating the average of the returns following first visits to s. The \textbf{every-visit} MC method on the other hand, estimates $v_{\pi}(s)$ by averaging the returns following all visits to s. Our focus in this project is the \textbf{first-visit} MC method and it's procedural form is provided in Section \ref{sec:appendix} of Appendix. 
+\vspace{0.2cm}
+
+\textbf{Monte Carlo Estimation of Action Values}:
+\* 
+
+Assuming a model is not readily available in estimating state values, it becomes easier and useful to rather compute action values. The main goal for MC methods is to being able to estimate  $q_{\pi}(s)$, the expected return when performing action a, for being in state s and thereafter following policy $\pi$. The major problem here is that many state-action pairs may never be visited and learning is thus affected as all states cannot be explored. In being able to compare all states, the value of all actions from each state needs to be estimated. This is the problem of \textbf{maintaining exploration} and the most common approach to ensure that all state-action pairs are visited, is to only consider stochastic policies for which all actions in each state has a non-zero probability of being selected. 
+\vspace{0.2cm}
+
+\textbf{Monte Carlo Control}:
+\* 
+
+In this section, we explain how Monte Carlo estimation can be used to approximate optimal policies. The idea is to maintain both an approximate value function and an approximate policy, as under Generalized Policy Iteration (GPI)\footnote{GPI: small description of GPI}. The value function is repeatedly updated to approximate the value function under current policy and the policy is repeatedly improved with respect to the current value function. The Monte Carlo control can be shown by form of a closed-loop system as shown below:
+
+\begin{center}
+    \includegraphics[width = 40mm, scale=0.8]{Closed loop.jpg}
+    \begin{figure} [!h]
+    \caption{Closed loop Monte Carlo} \label{fig:fig}
+    \end{figure}
+\end{center}
+
+The two changes (value function iteration and policy improvement) works against each other but also cause both the policy and value function to approach optimality. 
+\vspace{0.2cm}
+
+\textbf{\underline{MC policy iteration and improvement}}
+\*
+
+To explain the MC policy iteration, we begin with the following assumptions:
+
+\begin{enumerate} [label=(\roman*)]
+    \item We begin with an arbitrary policy $\pi_{0}$
+    \item We observe an infinite number of episodes
+    \item Episodes are generated with exploring starts
+\end{enumerate}
+
+Under this method, alternating steps of policy evaluation and improvement are performed, beginning aft $\pi_{0}$ and ending with the optimal policy as shown: 
+
+\begin{equation}
+    \pi_{0} \stackrel{\mathrm{E}}{\longrightarrow} q_{\pi 0} \stackrel{\mathrm{I}}{\longrightarrow} \pi_{1} \stackrel{\mathrm{E}}{\longrightarrow} q_{\pi_{1}} \stackrel{\mathrm{I}}{\longrightarrow} \pi_{2} \stackrel{\mathrm{E}}{\longrightarrow} \cdots \stackrel{\mathrm{I}}{\longrightarrow} \pi_{*} \stackrel{\mathrm{E}}{\longrightarrow} q_{*}
+\end{equation}
+
+where $\stackrel{\mathrm{E}}{\longrightarrow}$ denotes a complete policy evaluation and $\stackrel{\mathrm{I}}{\longrightarrow}$ denotes a comlete policy improvement. Under the three above assumptions, the MC methods will compute each exact $q_{\pi_{k}}$ for the respective $\pi_{k}$. 
+\vspace{0.2cm}
+
+As for the policy improvement, it is done by making the policy greedy with respect to the current value function. For a particular action-value function q, the corresponding policy is the one that for each state s, chooses that action with maximum action-value. This is given by: 
+
+\begin{equation}
+    \pi(s)=\arg \max _{a} q(s, a)
+\end{equation}
+
+Policy improvement is then done by considering each $\pi_{k}$ as the greedy policy to $q_{\pi_{k}}$. The policy improvement theorem\footnote{policy improvement theorem: small explanation} then applies to both $\pi_{k}$ and $\pi_{k+1}$ as for all $s \in \mathcal{S}$, 
+
+\begin{equation}
+    \begin{aligned}
+q_{\pi_{k}}\left(s, \pi_{k+1}(s)\right) &=q_{\pi_{k}}\left(s, \arg \max _{a} q_{\pi_{k}}(s, a)\right) \\
+&=\max _{a} q_{\pi_{k}}(s, a) \\
+& \geq q_{\pi_{k}}\left(s, \pi_{k}(s)\right) \\
+&=v_{\pi_{k}}(s)
+\end{aligned}
+\end{equation}
+
+\textbf{Note}: The policy improvement theorem ensures that each $\pi_{k+1}$ is uniformly better than $\pi_{k}$ or as just as good as $\pi_{k}$ which ensures the process to eventually converge to the optimal policy and optimal value function. 
+\vspace{0.2cm}
+
+\textbf{Avoiding unlikely assumptions}:
+\* 
+
+In order to guarantee the convergence for the MC method, one of the assumptions made was that episodes have exploring starts. To obtain a practical algorithm however, we should remove this assumption.  The agent has to therefore make sure to continue selecting states over time. Two useful approaches in achieving this are the on-policy and off-policy methods. On-policy methods attempt to evaluate or improve the policy that is used while off-policy methods attempt to evaluate or improve a policy different from that used to generate the original data. 
+\vspace{0.2cm}
+
+\textbf{\underline{Monte Carlo on-policy}}
+\* 
+
+For on-policy control methods, the policy is considered soft, implying that $\pi(a \mid s)>0 \text { for all } s \in \mathcal{S} \text { and all } a \in \mathcal{A}(s)$ but shifts gradually to an optimal policy. The on-policy used for purpose of this project uses $\varepsilon-\text {greedy}$ policies meaning, most of the time, the action with the maximum estimated action-value is chosen with probability $\varepsilon$ rather than randomly selecting an action. We note that for any $\varepsilon-\text {soft}$ policy, $\pi$, any $\varepsilon-\text {greedy}$ policy with respect to $q_{\pi}$ is guaranteed to be a better or equal than $\pi$. Adapting the notion of greedy policy, we are assured of improvement at every step, except when the best policy is among the $\varepsilon-\text {soft}$ policies. The MC on-policy's algorithm is presented below: 
+
+\begin{tcolorbox}[
+    standard jigsaw,
+    title=First-visit MC on-policy control algorithm,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+]
+Initialize, for all $s \in \mathcal{S}, a \in \mathcal{A}(s)$:\\
+Q(s, a) \leftarrow \text { arbitrary }\\
+Returns$(s, a) \leftarrow$ empty list\\
+$\pi(a \mid s) \leftarrow$ an arbitrary $\varepsilon$ -soft policy
+\vspace{1cm}
+
+Repeat forever:
+\begin{enumerate} [label=(\alph*)]
+    \item Generate an episode using $\pi$
+    \item For each pair $s$, a appearing in the episode:\\
+    $G \leftarrow$ return following the first occurrence of $s$ \\
+    Append $G$ to $\operatorname{Returns}(s, a)$\\
+    Q(s, a) \leftarrow \text { average }(\text { Returns }(s, a))\\
+    \item \text{For each s in the episode:}\\
+    $a^{*}$ \leftarrow \arg \max $_{a} Q(s, a)$\\
+    For all $a \in \mathcal{A}(s):$ \\
+    $\pi(a \mid s) \leftarrow\left\{\begin{array}{ll}
+1-\varepsilon+\varepsilon /|\mathcal{A}(s)| & \text { if } a=a^{*} \\
+\varepsilon /|\mathcal{A}(s)| & \text { if } a \neq a^{*}
+\end{array}\right.$
+\end{enumerate}
+\end{tcolorbox}
+
+
+\textbf{Note}:
+
+\textbf{\underline{Monte Carlo off-policy}}
+\*
+
+Under the on-policy method, the value of a policy is estimated while using it for control. Under off-policy methods however, the two functions (policy and control) are treated separately. The policy under MC off-policy can be divided between behaviour and target policy. Behaviour policy is used to generate behaviour and target policy is the policy to be evaluated and improved. The off-policy approach adapts the behaviour policy to learn and improve the target policy. An important requirement again here is that all possibilities are explored , i.e. for the behaviour policy to be soft. 
+The following shows the MC-off policy algorithm.
+
+\begin{tcolorbox}[
+    standard jigsaw,
+    title=Every-visit MC off-policy control algorithm,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+]
+Initialize, for all $s \in \mathcal{S}, a \in \mathcal{A}(s):\\
+$Q(s, a)$ \leftarrow \text { arbitrary } \\
+$C(s, a)$ \leftarrow 0\\
+$\pi(s)$ \leftarrow \text{a deterministic policy that is greedy with respect to Q}
+
+Repeat forever:\\
+\text{Generate an episode using any soft policy} $\mu:$
+S_{0}, A_{0}, R_{1}, \ldots, S_{T-1}, A_{T-1}, R_{T}, S_{T} \\
+G \leftarrow 0 \\
+$W \leftarrow 1$ \\
+For $t=T-1, T-2, \ldots$ down to 0\\
+G \leftarrow \gamma G+R_{t+1} \\
+C\left(S_{t}, A_{t}\right) \leftarrow C\left(S_{t}, A_{t}\right)+W \\
+Q\left(S_{t}, A_{t}\right) \leftarrow Q\left(S_{t}, A_{t}\right)+\frac{W}{C\left(S_{t}, A_{t}\right)}\left[G-Q\left(S_{t}, A_{t}\right)\right]\\
+$\pi\left(S_{t}\right) \leftarrow \arg \max _{a} Q\left(S_{t}, a\right) \quad($with ties broken arbitrarily$)
+\vspace{0.1cm}
+
+W \leftarrow W \frac{1}{\mu\left(A_{t} \mid S_{t}\right)}
+
+If $W=0$ then ExitForLoop
+\end{tcolorbox}
+
+
+\textbf{Note}:
+
+\subsubsection{Temporal-Difference Learning}
+\* 
+
+Temporal-Difference (TD) learning is considered an idea central to reinforcement learning. TD learning combines MC methods and dynamic programming (DP)\footnote{DP:small explanation of DP}. TD methods can learn from raw experience without requiring specifications of the environment's dynamics. TD methods specifically update their estimates by bootstrapping learned estimates. 
+
+\textbf{TD Prediction}:
+\*
+
+TD as MC methods uses past experience to solve a RL problem. Considering an experience acquired from following policy $\pi$, both methods update their estimates of v to $v_{\pi}$ for non-terminal states $S_{t}$. We know that MC methods must wait the end of an episode to update $V\left(S_{t}\right)$. TD methods however need to wait only the next time step. At time $t+1$, a target is immediately formed and an update using observed reward $R_{t+1}$, and the estimate $V\left(S_{t+1}\right)$. The simplest TD method is known as $TD(0)$ and given by: 
+
+
+\begin{equation}
+    V\left(S_{t}\right) \leftarrow V\left(S_{t}\right)+\alpha\left[R_{t+1}+\gamma V\left(S_{t+1}\right)-V\left(S_{t}\right)\right]
+\end{equation}
+
+\textbf{Note}: We note that the target functions for the MC update is $G_{t}$ and TD update is $R_{t+1}+\gamma V\left(S_{t+1}\right)$ and that TD target is an estimate. It is as estimate since TD methods sample expected values and uses the estimated V instead of the true $v_{\pi}$. The TD method thus combines the sampling ideas of MC methods and bootstrapping idea of DP. 
+\vspace{0.2cm}
+
+The procedural form of $TD(0)$ is given provided in Section \ref{sec:appendix} of Appendix:
+\vspace{0.2cm}
+
+\textbf{TD(0) prediction approach}:
+\* 
+
+Given an approximate value function V, increments from Eq 42 and $V\left(S_{t}\right) \leftarrow V\left(S_{t}\right)+\alpha\left[G_{t}-V\left(S_{t}\right)\right]$, the MC method are computed at every time step t for which a non-terminal state is visited. The value function is updated only once, using the sum of all increments. The new available experiences are processed together with the value function until the value function converges. This is referred to as "batch updating" as updates are only made after each batch of training data has been processed.
+
+\textbf{Advantages of TD methods}:
+\* 
+We outline some advantages of the TD methods given its relative importance to the other methods also considered up to now. 
+
+\begin{enumerate} [label=(\roman*)]
+    \item TD over DP methods do not require a model of the environments' dynamics. 
+    \item TD over MC methods are implemented on a fully-incremental fashion. TD methods need to wait only one time step while MC methods require the end of an episode to make an update.
+    \item TD over MC methods do not discard episodes for which experimental actions have been performed. This idea of discounting episodes can slow learning.
+    \item In practice, TD methods have been found to converge faster than \text { constant- } $\alpha$ MC methods for stochastic problems.
+\end{enumerate}
+
+\textbf{Note}: Similar to MC methods, TD methods also face the trade off of exploration and exploitation. TD methods can also be of two forms: On-Policy TD and Off-Policy TD Control.
+
+\subsubsection{SARSA: On-Policy TD Control}
+Under the SARSA approach, the first step is to learn an action-value rather than a state-value function. $q_{\pi}(s, a)$ must be estimated for the current policy $\pi$ for all states and actions. The method for SARSA is essentially similar to the initial TD method described. The procedural form of the SARSA algorithm is provided section \ref{sec:appendix} of Appendix.
+\vspace{0.1cm}
+
+Initially, we considered transitions from state to state and learned the states values. We now consider transitions from state-action pair to state-action pair and learn the state-action pair values. The corresponding algorithm ensuring convergence under $TD(0)$ also apply to the SARSA algorithm given by: 
+
+\begin{equation}
+    Q\left(S_{t}, A_{t}\right) \leftarrow Q\left(S_{t}, A_{t}\right)+\alpha\left[R_{t+1}+\gamma Q\left(S_{t+1}, A_{t+1}\right)-Q\left(S_{t}, A_{t}\right)\right]
+\end{equation}
+
+An update is done following every transition from a non-terminal state $S_{t+1}$. Also $Q\left(S_{t+1}, A_{t+1}\right)$ is however defined to be 0 for a terminal state $S_{t+1}$. It is in addition noted that the rule Eq 43 uses all elements of events: $\left(S_{t}, A_{t}, R_{t+1}, S_{t+1}, A_{t+1}\right)$ which makes up a transition from one state-action pair to the other. We also note that the convergence of the SARSA algorithm depends on the nature of the policy's dependence on q. For example, the choice between $\varepsilon-\text {greedy}$ and $\varepsilon-\text {soft}$ policy might affect the convergence of the SARSA algorithm. 
+
+\subsubsection{Q-Learning: Off-Policy TD Control}
+
+\textbf{One-step Q-Learning}:
+\*
+
+One of the most important breakthroughs in RL was the development of an off-policy TD control algorithm known as Q-Learning \citep{Sutton}. The simplest form of q-learning is a one-step Q-Learning as given by: 
+
+\begin{equation}
+Q\left(s, a\right) \Leftarrow
+Q\left(s, a\right)+\alpha\left[r+\gamma \max _{a^{\prime}} Q\left(s^{\prime}, a^{\prime}\right)-Q\left(s, a\right)\right] \label{eqn:6}
+\end{equation}
+
+In Equation \ref{eqn:6}, $\alpha$ is the learning rate, allowing to determine the size of the update made on each time-step and $\gamma$ is the discount rate, allowing to determines the value of future rewards.
+\vspace{0.2cm}
+
+The learned action-value function, Q, directly approximates $q_{*}$, independent of the policy being followed which dramatically simplifies our analysis and fasten convergence. The one requirement is however that all state-action pairs are continuously updated. Under the assumption of the one-step Q-learning and a variant of stochastic approximation conditions on the sequence of step-size parameters, it has been shown that Q converges with probability 1 to  $Q^{*}$ 
+\vspace{0.2cm}
+
+The Q-Learning algorithm procedural form is shown below:
+
+\begin{tcolorbox}[
+    standard jigsaw,
+    title=Q-Learning off-policy TD control algorithm,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+]
+Initialize $Q(s, a), \forall s \in \mathcal{S}, a \in \mathcal{A}(s),$ arbitrarily, and $Q($ terminal-state, $\cdot)=0$ \\
+Repeat (for each episode):\\
+Initialize $S$ Repeat (for each step of episode):\\
+Choose $A$ from $S$ using policy derived from $Q$ (e.g. $\varepsilon-\text {greedy}$)\\ 
+Take action $A$, observe $R$, S^{\prime}\\
+Q(S, A) \leftarrow Q(S, A)+\alpha\left[R+\gamma \max _{a} Q\left(S^{\prime}, a\right)-Q(S, A)\right] \\
+S \leftarrow S^{\prime} ;
+
+until $S$ is terminal
+\end{tcolorbox}
+
+\textbf{}
+
+\subsection{Deep Q-Learning}
+
+\subsection{Complex Dynamics: Multi-Learning agent}
+
+For the multi-agent set-up, we want to investigate, whether multiple agents outperform independent agents who do not pass information across learning given a fixed number of reinforcement-learning agents in the game. We treat independent agents as a benchmark. We also aim to know the cost attached to  cooperative agents. Cooperative agents learn and interact by sharing sensation, episodes and learned policies \citep{T_Multi}. To model a Multi-agent interaction, we adopt the concept of Complex Dynamics used in learning complicated games.
+\\* 
+
+\noindent
+\textbf{Complex Dynamics}
+\vspace{0.2cm}
+
+Complex dynamics is an area of mathematics focused on the study of dynamical systems defined by iteration of functions on wider and complex state spaces\citep{Complex_dynamics}. Game theory is a standard approach used in modelling strategic interactions but mainly studies the optimal actions of simple games.Blackjack is a game involving interaction between a player and a dealer. The number of action-state spaces of a blackjack game will be bigger for the case of multi-agents rather than a single agent competing against the house. We therefore consider Complex Dynamics as a potential extension to the existing q-algorithm where more agents now simultaneously compete against the house. We will consider, under the Dynamics approach, the effect of a single agent relative to multiple agents to the blackjack game outcomes.
+
+\begin{enumerate} 
+\item \textbf{Single multi-RL\footnote{Reinforcement-Learning} agent}
+For the case of a single multi-RL agent, the set-up of the game and methodology used to allow learning is the same as it would be for the case of a single agent. We will use the one-step q-learning given in Equation \ref{eqn:6} to update the player's policies.
+
+\item \textbf{Two multi-RL agents}
+In the case of two multi-RL agents, the paper by \citep{Complex_dynamics} considers a 2-person games involving a type of reinforcement learning called Experience-Weighted Attraction (EWA). The EWA assumes a numerical attraction to each strategy. A numerical attraction is simply a postive numerical value attached to a strategy and allows to determine the probability of a player choosing that strategy \citep{Complex_dynamics}.
+\end{enumerate}
+
+\textbf{\underline{Methodology for two multi-RL agents:}}
+\vspace{0.2cm}
+
+We consider 2 players A and B such that at each step time t, player $\mu \in\{\text {A}, B\}$ chooses between one of N possible moves. The player picks the ith move with frequency $x_{i}^{\mu}(t)$ where $i=1, \ldots, N$. The frequency vector $ \mathbf{x}^{*}(t)=\left(x_{1}^{\mu}, \ldots, x_{N}^{\mu}\right) \text { is the }$ strategy of player $\mu$. The payoffs received by A for playing strategy i and B for playing strategy j is given by $\Pi_{i j}^{A}$ and $\Pi_{j i}^{B}$ respectively. The players then learn their strategies $\mathbf{x}^{\mu}$ using that form of reinforcement learning called the EWA \cite{Complex_dynamics}. Experimental economists have shown that this approach provides a reasonable approximation for how real players learn in games \citep{Complex_dynamics}. 
+\vspace{0.2cm}
+
+Under this approach, the probability of a given move is given by Equation:
+
+\begin{equation}
+    x_{i}^{\mu}(t)=\frac{e^{\beta Q_{i}^{\mu}(t)}}{\sum_{k} e^{\beta Q_{k}^{\mu}(t)}}
+\end{equation}
+
+where $Q_{i}^{\mu}$ is called the "attraction" for player $i$ to strategy $\mu$
+
+Using the EWA, players A and B attractions are updated according to the Equations 8 and 9 below:
+
+\begin{equation}
+    Q_{i}^{A}(t+1)=(1-\alpha) Q_{i}^{A}(t)+\sum_{j} \Pi_{i j}^{A} x_{j}^{B}(t)
+\end{equation}
+
+\begin{equation}
+    Q_{i}^{B}(t+1)=(1-\alpha) Q_{i}^{B}(t)+\sum_{j} \Pi_{i j}^{B} x_{j}^{A}(t)
+\end{equation}
+
+Equation 8 shows a situation where both players vary their strategies slowly so that A is able to collect appropriate statistics about B before updating his own strategy \cite{Complex_dynamics}. The same applies for player B under the equation 9 where he collects information about player A. 
+\vspace{0.2cm}
+
+\begin{enumerate}[resume] 
+  \item \textbf{3 or more Multi RL agent}
+By randomly generating games under EWA, the forces enabling learning are characterized by 3 seperate systems \citep{Complex_dynamics}:
+\begin{enumerate} [label=(\roman*)]
+\item convergence to a unique fixed point
+\item Huge multiplicity of stable fixed points
+\item Chaotic behaviour\footnote{Chaotic behaviour: small changes within a closed system leading to drastic changes}
+\end{enumerate}
+\end{enumerate}
+
+It is noted that moves, under the ensemble of games studied in this paper are randomly chosen. This means the learning dynamics have a stochastic component. The paper suggests that the analysis of the 2-player game can potentially be extended to multiplier games \citep{Complex_dynamics}. Games become harder to learn with increased competition, especially if learning algorithms with long memory is used. \citep{Complex_dynamics} preliminary studies of multiplayer games suggest an increase in the chaotic regime as the number of players increase leading to intermittent bursts of large fluctuations punctuated by relative quiescence of total payoffs of all players \citep{Complex_dynamics}. 
+
+\section{Blackjack environments}
+
+For purpose of this project, we use the OpenGym AI module, a platform containing a number of simulated environments for which reinforcement learning algorithms can be compared. For purpose of this project, we adapt the environment "Blackjack-v0" provided by OpenGym, which allows to simulate a blackjack game. We use the the two environments below for our first 2 base cases and (Cases 5,7,8,9) respectively:
+
+\begin{enumerate} [label=(\roman*)]
+    \item Blackjack-v0
+    \item Blackjack-v1
+\end{enumerate}
+
+\subsection{Blackjack-v0 game settings}
+This game is placed with an infinite deck (or with replacement).
+The game starts with each (player and dealer) having one face up and one face down card.
+\vspace{0.2cm}
+
+\textbf{Decks}: The game is played with an infinite deck. It can also be viewed as a game where the deck is played with replacement.
+\vspace{0.1cm}
+
+\textbf{Actions}: The player is allowed to hit (hit =1) until he wants to stick (stand=0). These two actions define the actions in our state space.
+\vspace{0.1cm}
+
+\textbf{The deal}: After the player stops hitting or stands, the dealer reveals his face-down card and draws until his sum is greater than or equal to 17. 
+\vspace{0.1cm}
+
+\textbf{Outcomes}: If the player busts, the player loses and if the dealer busts, the player wins. If neither the player nor the dealer busts, the (win, lose, draw) outcome is determined by whose sum is more favourable and closer to 21. The reward (second entry in the tuple returned by step) is 1 if the player wins, -1 if the player loses, and 0 if there is a tie.
+\vspace{0.1cm}
+
+\textbf{Implementation}: In the settings of "Blackjack-v0", we have the observation (first entry in the tuple returned by step) of a 3-tuple of the players current total, the dealer's face-up card and whether the player holds a usable ace\footnote{$\textbf{Usable ace index}: {Has Ace:1 Has no Ace:0}$}.
+\vspace{0.1cm}
+
+\subsection{Blackjack-avb1597 game settings}
+
+
+
+\section{Methodology}
+
+For this project, the performance of the different reinforcement learning models will be compared two base cases. We run a number of simulations for the 2 models and analyse the performance rates. It is however important to make the distinction between a round and a simulation.
+\vspace{0.2cm}
+
+\textbf{Round}: The game starts off with a fixed number of decks. After each player places an initial bet, the dealer deals two cards to each player and himself. Each player chooses their actions followed by the dealer choosing his. Based on favourable scores, money between the dealer and each player is exchanged. This is one round. 
+\vspace{0.2cm}
+
+\textbf{Simulation}: Once the number of decks used is nearly depleted, there are not enough cards to be dealt to allow play to happen. This is when one simulation ends. A second simulation begins when a fresh pack of decks is again placed on the table after which another play with many rounds to happen begins. The limit to a new simulation is set to a minimum of 24 cards or less remaining for the full decks used. 
+
+\subsection{Methodology 1: Random Blackjack simulator}
+The first base case is a random blackjack simulator where all players take random but intuitive actions. We implement a random blackjack simulator to observe any difference in the win \%, draw \% and loss \% of players across different number of simulations and deck size. 
+\vspace{0.2cm}
+
+\textbf{\underline{Game settings}}:
+
+\begin{enumerate}
+    \item \textbf{Decks}: We allow to use multiple decks but run simulations for 4-8 decks.
+    \item \textbf{Players}: We allow for a multiplayer game but run simulations for 1-7 players.
+    \item \textbf{Actions}: Actions are randomly chosen to be one of hitting, standing, doubling down or splitting.
+    \item \textbf{Hitting}: We impose an intuitive condition where the player hits 3 times for a hand total less than 6 and hit 2 times otherwise. The choice of hitting 2 times is chosen in the hope the player avoids a bust from taking that action. 
+    \item \textbf{Splitting}: We impose a condition where the player splits for a hand total of greater or equal to 4 and less than 18.
+\end{enumerate}
+
+\subsection{Methodology 2: Improved Simulator}
+For the second base case, we improve the first simulator and implement the basic strategy and Ed Thorp's Hi-Low count and compare the different performance rates.
+\vspace{0.2cm}
+
+\textbf{\underline{Game settings:}}
+
+\begin{enumerate}
+    \item \textbf{Decks}: We allow the use multiple decks but run simulations for 4-8 decks.
+    \item \textbf{Players}: We allow for a multiplayer game but run simulations for 1-7 players.
+    \item \textbf{Actions}: Actions are based off the strategy table as indicated in Section \ref{sec:appendix}. 
+    \item \textbf{Hitting}: We impose an intuitive condition where the player hits 3 times for a hand total less than 6 and hit 2 times otherwise. The choice of hitting 2 times is chosen in the hope the player avoids a bust from taking that action. 
+    \item \textbf{Splitting}: We impose a condition where the player splits for a hand total of greater or equal to 4 and less than 18.
+    \item \textbf{Betting side}: The card counter uses the Hi-Low method proposed by Thorp and the other players randomly decide on the \% of their bankroll to bet for each round.
+    \item \textbf{Bankroll}: We set a bankroll of R10, 000 for all players and a bankroll of R100, 000 for the dealer. We however assume that, even the dealer goes bankrupt, the house can still pay the winning agent and if the player(s) go bankrupt, they stay in the game and their bankroll stay updated with respect to positive and negative rewards and payments. 
+\end{enumerate}
+
+\subsection{Methodology 3: Monte Carlo prediction}
+\subsection{Methodology 4: Base Q-Learning (Hitting and standing only)}
+\subsection{Methodology 5: Q-Learning (Doubling down and splitting)}
+\subsection{Methodology 6: Deep Q-Learning (Hitting and standing only)}
+\subsection{Methodology 7: Deep Q-Learning (Doubling down and splitting)}
+\subsection{Methodology 8: Complex Dynamics}
+\subsection{Methodology 9: Replicating 21}
+
+\section{Results}
+
+\subsection{Result 1: Random Blackjack Simulator}
+
+This section provides the performance of the different players against the dealer for the random blackjack simulator. Several simulations were conducted and the results were fairly consistent. 
+\vspace{0.2cm}
+
+\textbf{Case 1}: 4 Players, 6 Decks and 1000 simulations
+
+\begin{table}[H]
+\begin{tcolorbox}[tab2,tabularx={|m{2.5cm}| m{2.5cm}|m{2.5cm}|m{2.5cm}}]
+ \textbf{Players} & \textbf{Win \%} & \textbf{Draw \%} & \textbf{Loss \%} \\\hline\hline
+0 & 8.28\% & 1.39\% & 9.27\% \\ \hline
+1 & 6.87\% & 0.87\% & 9.70\% \\\hline
+2 & 9.49\%  & 0.76\% & 8.49\% \\ \hline
+3 & 8.33\% & 2.93\% & 6.92\% 
+\end{tcolorbox}
+\caption{1st simulation} \label{tab:count1}
+\label{news}
+\end{table}
+
+\textbf{Case 2}: 6 Players, 8 Decks and 10000 simulations
+
+\begin{table}[H]                
+\begin{tcolorbox}[tab2,tabularx={|m{2.5cm}| m{2.5cm}|m{2.5cm}|m{2.5cm}}]
+ \textbf{Players} & \textbf{Win \%} & \textbf{Draw \%} & \textbf{Loss}  \\\hline\hline
+0 & 4.75\% & 2.59\% & 5.28\% \\ \hline
+1 & 6.47\% & 3.99\% & 2.22\% \\\hline
+2 & 7.65\%  & 1.40\% & 3.74\% \\ \hline
+3 & 6.69\% & 0.62\% & 6.02\% \\ \hline
+4 & 5.61\% & 0.65\& & 6.58\% \\ \hline
+5 & 4.50\% & 1.36\% & 6.37\% 
+\end{tcolorbox}
+\caption{2nd simulation} \label{tab:count2}
+\label{news}
+\end{table}
+
+We note that Player 0 is indexed the first player. Considering the above two tables, we observe small variations in the win \%, draw \% and loss \%. The reason for such small variation is due the fact all players are randomly choosing one action but once the particular action is chosen, the same intuition is applied by each player. We therefore expect similar win, draw and loss rates.
+
+\subsection{Result 2: Improved simulator}
+This section provides the performance of the different players and the dealer for the improved simulator. The results were again consistent to our expectations.
+\vspace{0.2cm}
+
+\textbf{Case 1}: 4 Players, 6 Decks, Dealer stands on soft 17 and 10000 simulations
+
+\begin{table}[H]                
+\begin{tcolorbox}[tab2,tabularx={| m{3.0cm} | m{2.0cm} | m{2.0cm} | m{2.0cm} |m{3.0cm}}]
+ \textbf{Players} & \textbf{Win \%} & \textbf{Draw \%} & \textbf{Loss \%} & \textbf{Bankroll} \\\hline\hline
+Card counter & 14.55\% & 1.35\% & 3.21\% & R14, 647, 394\\ \hline
+Player 1 & 11.03\% & 1.43\% & 7.52\% & -R6, 835, 650\\\hline
+Player 2 & 11.01\%  & 1.44\% & 7.52\% & -R6, 989, 950\\ \hline
+Player 3 & 11.02\% & 1.47\% & 7.42\% & -R6, 949, 200\\ \hline
+Dealer & 3.21\% & 1.35\% & 14.55\% & -R14, 622, 385 
+\end{tcolorbox}
+\caption{3rd simulation} \label{tab:count3}
+\label{news}
+\end{table}
+
+\textbf{Case 2}: 6 Players, 8 Decks, Dealer hits on soft 17 and 10000 simulations
+
+\begin{table}[H]                
+\begin{tcolorbox}[tab2,tabularx={|m{3.0cm}| p{2.0cm}|m{2.0cm}||m{2.0cm}|m{3.0cm}}]
+ \textbf{Players} & \textbf{Win \%} & \textbf{Draw \%} & \textbf{Loss \%} & \textbf{Bankroll} \\\hline\hline
+Card counter & 8.58\% & 0.81\% & 2.06\% & R14,061,791\\ \hline
+Player 1 & 6.58\% & 0.84\% & 4.53\% & -R6, 975, 850\\\hline
+Player 2 & 6.56\%  & 0.87\% & 4.53\% & -R7, 012, 000\\ \hline
+Player 3 & 6.56\% & 0.85\% & 4.54\% & -R6, 980, 700\\ \hline
+Player 4 & 6.56\% & 0.85\% & 4.55\% & -R7, 177, 450\\ \hline
+Player 5 & 6.61\% & 0.88\% & 4.47\% & -R6, 961, 650\\ \hline
+Dealer & 2.06\% & 0.81\% & 8.58\% & -R18, 691, 233
+\end{tcolorbox}
+\caption{4th simulation} \label{tab:count4}
+\label{news}
+\end{table}
+
+From the above two tables, we observe that in both cases where the dealer stands and hits on soft 17, the card counter significantly outperforms the dealer relative to other players against the dealer. This is shown by the Win\% of the players representing their win rates on 10000 simulations against the dealer. We can also clearly observe a large discrepancy between the bankroll of the card counter when compared to the other players and dealer. Thus, even an initial bankroll ratio of 1:10 in favour of the dealer, the dealer in both cases goes bankrupt.
+\vspace{0.1cm}
+
+We now visually investigate over the performance of the card counter relative to another player against the dealer as a function of simulation size, number of players and deck size. 
+
+\subsubsection{Performance as a function of number of simulations:}
+
+
+
+\begin{figure}[!htb]\captionsetup{labelfont=bf}
+	\centering\captionsetup[subfloat]{labelfont=bf}
+	\subfloat[Performance vs 500 simulations]{\includegraphics[width=2in]{Baseperformance_500simulations(4,6,stand).png}}\quad
+		\subfloat[Performance vs 1000 simulations]{\includegraphics[width=2in]{Baseperformance_1000simulations(5,8,stand).png}}\quad
+	\subfloat[Performance vs 10000 simulations]{\includegraphics[width=2in]{Baseperformance_10000simulations(6,8,hit).png}}\\	
+	\caption{ Here we investigate the algorithm complexity between traditional implementation methods against fast Fourier methods. The logarithm of compute time (measured in seconds) is plotted as a function of the number of data points n for the various methods. The first and second columns are the Dirichlet and Fejér representation respectively.}
+\end{figure}
+\newpage
+
+\subsubsection{Performance as a function of number of players:}
+
+Now in this section, we investigate 
+
+\begin{figure}[!htb]\captionsetup{labelfont=bf}
+	\centering\captionsetup[subfloat]{labelfont=bf}
+	\subfloat[Performance vs 1000 simulations]{\includegraphics[width=2in]{Baseperformance_1000simulations(3-7,8,hits).png}}\quad
+		\subfloat[Performance vs 1000 simulations]{\includegraphics[width=2in]{Baseperformance_1000simulations(3-7,8,stand).png}}\quad
+	\subfloat[Performance vs 2000 simulations]{\includegraphics[width=2in]{Baseperformance_2000simulations(3-7,8,stand).png}}\\	
+	\caption{ Here we investigate the algorithm complexity between traditional implementation methods against fast Fourier methods. The logarithm of compute time (measured in seconds) is plotted as a function of the number of data points n for the various methods. The first and second columns are the Dirichlet and Fejér representation respectively.}
+\end{figure}
+\newpage
+
+\subsubsection{Performance as a function of deck size:}
+
+In this section, 
+
+\begin{figure}[!htb]\captionsetup{labelfont=bf}
+	\centering\captionsetup[subfloat]{labelfont=bf}
+	\subfloat[Performance vs 1000 simulations]{\includegraphics[width=2in]{Baseperformance_1000simulations(6,1-8,hits).png}}\quad
+		\subfloat[Performance vs 1000 simulations]{\includegraphics[width=2in]{Baseperformance_1000simulations(6,1-8,stand).png}}\quad
+	\subfloat[Performance vs 2000 simulations]{\includegraphics[width=2in]{Baseperformance_2000simulations(6,1-8,stand).png}}\\	
+	\caption{ Here we investigate the algorithm complexity between traditional implementation methods against fast Fourier methods. The logarithm of compute time (measured in seconds) is plotted as a function of the number of data points n for the various methods. The first and second columns are the Dirichlet and Fejér representation respectively.}
+\end{figure}
+\newpage
+
+
+
+
+\subsection{Result 3: Monte Carlo prediction}
+
+$\begin{array}{|c|c|c|}
+\hline \text { Rewards } & \text { Actions } & \text { Ace } \\
+\hline \text { +1 if player won } & \text { Hit } & 1 \\
+\hline \text { -1 if player loses } & \text { Stand } & 11 \\
+\hline \text { 0 if game is a draw } & & \\
+\hline
+\end{array}$
+\vspace{0.2cm}
+
+
+
+\subsubsection{Off-policy}
+
+\begin{center}
+    \includegraphics[width = 140mm, scale=0.8]{Monte_offpolicy.png}
+    \begin{figure} [!h]
+    \caption{Monte Carlo off-policy} \label{fig:fig}
+    \end{figure}
+\end{center}
+
+\subsubsection{On-policy}
+
+\begin{center}
+    \includegraphics[width = 140mm, scale=0.8]{Monte_onpolicy.png}
+    \begin{figure} [!h]
+    \caption{Monte Carlo on-policy} \label{fig:fig}
+    \end{figure}
+\end{center}
+
+\subsection{Result 4: Q-Learning}
+\subsubsection{Epsilon greedy algorithm}
+\subsubsection{Other Q-Learning algorithms}
+
+\subsection{Result 5: Deep Q-Learning}
+Although we have a fairly small state space, using a neural network as an approximator might potentially yield better results. The neural network learns the Q-matrix rather than storing it in memory. The Deep-Q network also introduced the idea of an experience buffer which stores and samples from the agent's experiences. 
+\*
+
+We therefore consider new approach like Vanilla Q-Learning also known ad Deep Q-Learning. The Deep-Q networks
+
+\subsubsection{Double Q-Learning}
+\subsubsection{Vanilla Q-Learning}
+
+\subsection{Result 6: Complex Dynamics}
+
+\subsection{Result 7: Replicating 21}
+
+
+\begin{enumerate}
+    \item Multiple tables
+    \item 6 card counters , 1 on each table
+    \item 1 big player to switch across tables with higher counts
+    \item Big player knows true count on table joined from mnemonic signals 
+    \item Big player knows which table has potentially high count from signals allowed from peers in team. 
+\end{enumerate}
+
+\textbf{Example of game settings}:
+\vspace{0.2cm}
+
+We assume a casino with 6 tables, each allowing for a standard blackjack game to occur. Each table starts off with the same number of decks, players (including 1 card counter), i.e. 1 card counter and 5 other players on each table and also a dealer per table. The similar rules as outlined in section \ref{sec:blackjack_rules} are followed. Each card counter keeps track of the count (Hi-Low method). Only one of the card counters, called the Big Player however sizes his bet using the Hi-Low method. The other card counters only store the count on every round, but randomly size their bet as a \% of their bankroll. The Big Player also follows the Basic Strategy Table as outlined in Section \ref{sec:appendix} of Appendix in deciding on his optimal action(s) on each round. If we assume a case for 10,000 simulations, for the first say $1/5th$ simulation, i.e. after the first 2000 simulations, the player switches to the table having the highest true count. From signals allowed from peers in team, the Big Player joins the table having the highest count. We then allow for 2 card counters to follow the Basic Strategy Table and Hi-Low method to optimize their financial return. The other players however generally keep a low profile before the Big Player joins him to the table to avoid suspicion and casino backoff.
+
+
+
+\section{Can we still beat the dealer?}
+
+\begin{enumerate}
+    \item \textbf{Casino backoff issue}: Can we get caught counting cards ? 
+    \item \textbf{Automatic deck shuffler issue}: Does it effect on player performance ?
+    \item \textbf{Memory issue}: Can player really count cards for increased deck size and simulation ?
+    \item \textbf{Casino Type}: Is the game being fairly played ?
+    \end{enumerate}
+    
+\section{Concluding remarks}
+
+\section{Future Work}
+\newpage
+
+\section{Python usage}
+\subsection{Packages and libraries used}
+\subsection{Blackjack environments}
+
+
+\section{Appendix} \label{sec:appendix}
+\*
+
+\subsection{Strategy Table}
+
+\begin{center}
+    \includegraphics[width = 180mm, scale=0.8]{Strategy Table.jpg}
+    \begin{figure} [!h]
+    \caption{Strategy Table 1} \label{fig:fig2}
+    \end{figure}
+\end{center}
+
+The above two tables in Figure \ref{fig:fig2} are the strategy tables adapted by \citep{mich}. To use the basic strategy, a player looks  up  his  hand  along  the  left  vertical  edge  and  the dealer’s up card along the top.  In both cases an A stands for ace.  From top to bottom are the hard totals, soft totals, and splittable hands. There are two charts depending on whether the dealer hits or stands on soft 17
+\vspace{0.2cm}
+
+\subsection{Reinforcement Learning algorithms}
+
+\textbf{First-visit MC algorithm}
+\vspace{0.1cm}
+
+\begin{tcolorbox}[
+    standard jigsaw,
+    title=First-visit MC to estimate $v_{\pi}$,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+]
+Initialize:\\
+\quad $\pi \leftarrow$ policy to be evaluated\\
+$V \leftarrow$ an arbitrary state-value function\\
+Returns $(s) \leftarrow$ an empty list, for all $s \in \mathcal{S}$
+\vspace{1cm}
+
+Repeat forever:\\
+Generate an episode using $\pi$ \\
+For each state $s$ appearing in the episode:\\
+G \leftarrow \text{return following the first occurrence of s}\\
+\text{Append G to} \text { Returns }(s)\\
+V(s) \leftarrow \text { average }(\text {Returns}(s))
+\end{tcolorbox}
+
+\textbf{Note}: The first-visit MC will converge to $v_{\pi}(s)$ as the number of first-visit or visits to s goes to infinity. 
+\vspace{0.2cm}
+
+\begin{tcolorbox}[
+    standard jigsaw,
+    title=$TD(0)$ control algorithm,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+]
+Input: the policy $\pi$ to be evaluated \\
+Initialize $V(s)$ arbitrarily $\left(\right.$ e.g. $\left., V(s)=0, \forall s \in \mathcal{S}^{+}\right)$\\
+Repeat (for each episode):\\
+Initialize $S$ Repeat (for each step of episode):\\
+$A \leftarrow$ action given by $\pi$ for $S$ \\
+Take action $A ;$ observe reward, $R,$ and next state, $S^{\prime}$ \\
+V(S) \leftarrow V(S)+\alpha\left[R+\gamma V\left(S^{\prime}\right)-V(S)\right] \\
+S \leftarrow S^{\prime}
+
+until $S$ is terminal 
+\end{tcolorbox}
+
+\textbf{Note}: TD such as MC updates are referred to as "sample backups". The reason for so is that both methods involve looking ahead to a sample successor using the value of the successor and its reward to compute a \textbf{backed-up} value to update the value of the original state. 
+\vspace{0.2cm}
+
+\begin{tcolorbox}[
+    standard jigsaw,
+    title=SARSA on-policy TD control algorithm,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+]
+Initialize $Q(s, a), \forall s \in \mathcal{S}, a \in \mathcal{A}(s),$ arbitrarily, and $Q($terminal-state$, \cdot)=0$\\
+Repeat (for each episode):\\
+Initialize $S$\\
+Choose $A$ from $S$ using policy derived from $Q$ (e.g., $\epsilon$ -greedy)\\
+Repeat (for each step of episode):\\
+Take action $A,$ observe $R, S^{\prime}$\\
+Choose $A^{\prime}$ from $S^{\prime}$ using policy derived from $Q$ (e.g., $\epsilon$ -greedy $)$\\
+Q(S, A) \leftarrow Q(S, A)+\alpha\left[R+\gamma Q\left(S^{\prime}, A^{\prime}\right)-Q(S, A)\right] \\
+S \leftarrow S ; A \leftarrow A^{\prime};
+
+until $S$ is terminal
+\end{tcolorbox}
+
+\textbf{Note}:
+
+\begin{lstlisting}[language=Python, caption=Python example]
+import numpy as np
+    
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+    
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1) 
+
+    for i in range(m-1):
+        for j in range(i+1, m):
+            [r,c] = np.where(M2 == M1[i,j])
+            for k in range(len(r)):
+                VT[(i)*n + r[k]] = 1;
+                VT[(i)*n + c[k]] = 1;
+                VT[(j)*n + r[k]] = 1;
+                VT[(j)*n + c[k]] = 1;
+                
+                if M is None:
+                    M = np.copy(VT)
+                else:
+                    M = np.concatenate((M, VT), 1)
+                
+                VT = np.zeros((n*m,1), int)
+    
+    return M
+\end{lstlisting}
+
+\subsection{Result 3: Monte Carlo prediction}
+
+$\begin{array}{|c|c|c|}
+\hline \text { Rewards } & \text { Actions } & \text { Ace } \\
+\hline \text { +1 if player won } & \text { Hit } & 1 \\
+\hline \text { -1 if player loses } & \text { Stand } & 11 \\
+\hline \text { 0 if game is a draw } & & \\
+\hline
+\end{array}$
+\vspace{0.2cm}
+
+
+
+\subsubsection{Off-policy}
+
+\begin{center}
+    \includegraphics[width = 140mm, scale=0.8]{Monte_offpolicy.png}
+    \begin{figure} [!h]
+    \caption{Monte Carlo off-policy} \label{fig:fig}
+    \end{figure}
+\end{center}
+
+\subsubsection{On-policy}
+
+\begin{center}
+    \includegraphics[width = 140mm, scale=0.8]{Monte_onpolicy.png}
+    \begin{figure} [!h]
+    \caption{Monte Carlo on-policy} \label{fig:fig}
+    \end{figure}
+\end{center}
+
+\subsection{Result 4: Q-Learning}
+\subsubsection{Epsilon greedy algorithm}
+\subsubsection{Other Q-Learning algorithms}
+
+\subsection{Result 5: Deep Q-Learning}
+Although we have a fairly small state space, using a neural network as an approximator might potentially yield better results. The neural network learns the Q-matrix rather than storing it in memory. The Deep-Q network also introduced the idea of an experience buffer which stores and samples from the agent's experiences. 
+\*
+
+We therefore consider new approach like Vanilla Q-Learning also known ad Deep Q-Learning. The Deep-Q networks
+
+\subsubsection{Double Q-Learning}
+\subsubsection{Vanilla Q-Learning}
+
+\subsection{Result 6: Complex Dynamics}
+
+\subsection{Result 7: Replicating 21}
+
+
+\begin{enumerate}
+    \item Multiple tables
+    \item 6 card counters , 1 on each table
+    \item 1 big player to switch across tables with higher counts
+    \item Big player knows true count on table joined from mnemonic signals 
+    \item Big player knows which table has potentially high count from signals allowed from peers in team. 
+\end{enumerate}
+
+\textbf{Example of game settings}:
+\vspace{0.2cm}
+
+We assume a casino with 6 tables, each allowing for a standard blackjack game to occur. Each table starts off with the same number of decks, players (including 1 card counter), i.e. 1 card counter and 5 other players on each table and also a dealer per table. The similar rules as outlined in section \ref{sec:blackjack_rules} are followed. Each card counter keeps track of the count (Hi-Low method). Only one of the card counters, called the Big Player however sizes his bet using the Hi-Low method. The other card counters only store the count on every round, but randomly size their bet as a \% of their bankroll. The Big Player also follows the Basic Strategy Table as outlined in Section \ref{sec:appendix} of Appendix in deciding on his optimal action(s) on each round. If we assume a case for 10,000 simulations, for the first say $1/5th$ simulation, i.e. after the first 2000 simulations, the player switches to the table having the highest true count. From signals allowed from peers in team, the Big Player joins the table having the highest count. We then allow for 2 card counters to follow the Basic Strategy Table and Hi-Low method to optimize their financial return. The other players however generally keep a low profile before the Big Player joins him to the table to avoid suspicion and casino backoff.
+
+
+
+\section{Can we still beat the dealer?}
+
+\begin{enumerate}
+    \item \textbf{Casino backoff issue}: Can we get caught counting cards ? 
+    \item \textbf{Automatic deck shuffler issue}: Does it effect on player performance ?
+    \item \textbf{Memory issue}: Can player really count cards for increased deck size and simulation ?
+    \item \textbf{Casino Type}: Is the game being fairly played ?
+    \end{enumerate}
+    
+\section{Concluding remarks}
+
+\section{Future Work}
+\newpage
+
+\section{Python usage}
+\subsection{Packages and libraries used}
+\subsection{Blackjack environments}
+
+
+\section{Appendix} \label{sec:appendix}
+\*
+
+\subsection{Strategy Table}
+
+\begin{center}
+    \includegraphics[width = 180mm, scale=0.8]{Strategy Table.jpg}
+    \begin{figure} [!h]
+    \caption{Strategy Table 1} \label{fig:fig2}
+    \end{figure}
+\end{center}
+
+The above two tables in Figure \ref{fig:fig2} are the strategy tables adapted by \citep{mich}. To use the basic strategy, a player looks  up  his  hand  along  the  left  vertical  edge  and  the dealer’s up card along the top.  In both cases an A stands for ace.  From top to bottom are the hard totals, soft totals, and splittable hands. There are two charts depending on whether the dealer hits or stands on soft 17
+\vspace{0.2cm}
+
+\subsection{Reinforcement Learning algorithms}
+
+\textbf{First-visit MC algorithm}
+\vspace{0.1cm}
+
+\begin{tcolorbox}[
+    standard jigsaw,
+    title=First-visit MC to estimate $v_{\pi}$,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+]
+Initialize:\\
+\quad $\pi \leftarrow$ policy to be evaluated\\
+$V \leftarrow$ an arbitrary state-value function\\
+Returns $(s) \leftarrow$ an empty list, for all $s \in \mathcal{S}$
+\vspace{1cm}
+
+Repeat forever:\\
+Generate an episode using $\pi$ \\
+For each state $s$ appearing in the episode:\\
+G \leftarrow \text{return following the first occurrence of s}\\
+\text{Append G to} \text { Returns }(s)\\
+V(s) \leftarrow \text { average }(\text {Returns}(s))
+\end{tcolorbox}
+
+\textbf{Note}: The first-visit MC will converge to $v_{\pi}(s)$ as the number of first-visit or visits to s goes to infinity. 
+\vspace{0.2cm}
+
+\begin{tcolorbox}[
+    standard jigsaw,
+    title=$TD(0)$ control algorithm,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+]
+Input: the policy $\pi$ to be evaluated \\
+Initialize $V(s)$ arbitrarily $\left(\right.$ e.g. $\left., V(s)=0, \forall s \in \mathcal{S}^{+}\right)$\\
+Repeat (for each episode):\\
+Initialize $S$ Repeat (for each step of episode):\\
+$A \leftarrow$ action given by $\pi$ for $S$ \\
+Take action $A ;$ observe reward, $R,$ and next state, $S^{\prime}$ \\
+V(S) \leftarrow V(S)+\alpha\left[R+\gamma V\left(S^{\prime}\right)-V(S)\right] \\
+S \leftarrow S^{\prime}
+
+until $S$ is terminal 
+\end{tcolorbox}
+
+\textbf{Note}: TD such as MC updates are referred to as "sample backups". The reason for so is that both methods involve looking ahead to a sample successor using the value of the successor and its reward to compute a \textbf{backed-up} value to update the value of the original state. 
+\vspace{0.2cm}
+
+\begin{tcolorbox}[
+    standard jigsaw,
+    title=SARSA on-policy TD control algorithm,
+    opacityback=0,  % this works only in combination with the key "standard jigsaw"
+]
+Initialize $Q(s, a), \forall s \in \mathcal{S}, a \in \mathcal{A}(s),$ arbitrarily, and $Q($terminal-state$, \cdot)=0$\\
+Repeat (for each episode):\\
+Initialize $S$\\
+Choose $A$ from $S$ using policy derived from $Q$ (e.g., $\epsilon$ -greedy)\\
+Repeat (for each step of episode):\\
+Take action $A,$ observe $R, S^{\prime}$\\
+Choose $A^{\prime}$ from $S^{\prime}$ using policy derived from $Q$ (e.g., $\epsilon$ -greedy $)$\\
+Q(S, A) \leftarrow Q(S, A)+\alpha\left[R+\gamma Q\left(S^{\prime}, A^{\prime}\right)-Q(S, A)\right] \\
+S \leftarrow S ; A \leftarrow A^{\prime};
+
+until $S$ is terminal
+\end{tcolorbox}
+
+\textbf{Note}:
+
+\begin{lstlisting}[language=Python, caption=Python example]
+import numpy as np
+    
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+    
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1) 
+
+    for i in range(m-1):
+        for j in range(i+1, m):
+            [r,c] = np.where(M2 == M1[i,j])
+            for k in range(len(r)):
+                VT[(i)*n + r[k]] = 1;
+                VT[(i)*n + c[k]] = 1;
+                VT[(j)*n + r[k]] = 1;
+                VT[(j)*n + c[k]] = 1;
+                
+                if M is None:
+                    M = np.copy(VT)
+                else:
+                    M = np.concatenate((M, VT), 1)
+                
+                VT = np.zeros((n*m,1), int)
+    
+    return M
+\end{lstlisting}
+
+
+\bibliography{myrefs}
+\bibliographystyle{apalike}
+
+\end{document}
+
+
+
+
+
