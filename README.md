@@ -6,7 +6,7 @@
 
 ## Resources access
 
-[I'm an inline-style link](https://www.google.com)
+[link](https://www.google.com)
 
 
 ## Reproducing the research 
