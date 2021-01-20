@@ -1,4 +1,4 @@
-# The-Impact-of-deck-size-Q-Learning-Blackjack
+# The Impact of deck-size Q-Learning Blackjack
 
 ## Authors 
 -	Avish Buramdoyal
