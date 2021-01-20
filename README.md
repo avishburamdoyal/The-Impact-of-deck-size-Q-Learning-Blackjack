@@ -4,7 +4,7 @@
 -	Avish Buramdoyal
 - Tim Gebbie
 
-## Resouces access
+## Resources access
 
 ## Reproducing the research 
 
