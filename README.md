@@ -76,7 +76,7 @@ The above output shows that the player has no usable ace and a total of 23, i.e.
 
 ## Generating 3D plots 
 
-To generate the 3D plots from the report,  we adapt the function from [Dumke, 2017](https://github.com/dennybritz/reinforcement-learning/blob/master/lib/plotting.py) and the tutorial by [Hunter, 2012](https://matplotlib.org/mpl_toolkits/mplot3d/tutorial.html). The plotting of the value of states required additional toolkits: **mpl_toolkits.axes_grid1** and **mpl_toolkits.mplot3D**. 
+To generate the 3D plots from the report,  we adapt the function from [Dumke, 2017](https://github.com/dennybritz/reinforcement-learning/blob/master/lib/plotting.py) and the tutorial by [[Hunter, 2012]](https://matplotlib.org/mpl_toolkits/mplot3d/tutorial.html). The plotting of the value of states required additional toolkits: **mpl_toolkits.axes_grid1** and **mpl_toolkits.mplot3D**. 
 
 ## Functions used 
 
