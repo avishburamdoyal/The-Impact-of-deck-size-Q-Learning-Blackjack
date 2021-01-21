@@ -76,9 +76,44 @@ The above output shows that the player has no usable ace and a total of 23, i.e.
 
 ## Generating 3D plots 
 
-To generate the 3D plots from the report,  we adapt the function from [Dumke, 2017](https://github.com/dennybritz/reinforcement-learning/blob/master/lib/plotting.py) and the tutorial by [[Hunter, 2012]](https://matplotlib.org/mpl_toolkits/mplot3d/tutorial.html). The plotting of the value of states required additional toolkits: **mpl_toolkits.axes_grid1** and **mpl_toolkits.mplot3D**. 
+To generate the 3D plots from the report,  we adapt the function from [[Dumke, 2017]](https://github.com/dennybritz/reinforcement-learning/blob/master/lib/plotting.py) and the tutorial by [[Hunter, 2012]](https://matplotlib.org/mpl_toolkits/mplot3d/tutorial.html). The plotting of the value of states required additional toolkits: **mpl_toolkits.axes_grid1** and **mpl_toolkits.mplot3D**. 
 
 ## Functions used 
 
-### Monte Carlo Implementation
+### Monte Carlo Implementation: 
+
+The random policy under MC-off policy is the behaviour policy we follow when generating an episode and takes as argument the number of actions **nA** in the environment and returns a function **policy_function** which returns a vector of probabilities for an observation state.
+
+```python
+def random_policy(nA):
+    A = np.ones(nA, dtype=float) / nA  
+    
+    def policy_function(obs):
+        return A
+    return policy_function
+```
+We also provide the greedy policy function created for the MC off-policy. The greedy (target) policy, takes as argument the environment and the Q-values and returns the greedy-action policy function. 
+
+```python
+def greedy_policy(environment,Q):
+    def policy(obs):
+        p = np.zeros_like(Q[obs], dtype=float)
+        optimal_action = np.argmax(Q[obs])  #get best action by choosing max Q
+        p[optimal_action] = 1
+        return p
+    return policy
+```
+
+To allow for learning of states to occur, we make the assumption of exploring starts, making sure that all actions have an equal probability of being selected. We also require that all episodes are updated by the 3 tuple: environment state (player's hand total, dealer's current sum and usable ace or not), action requested and reward achieved.  
+
+```python
+prob_policy = target_policy(environment_state)
+action = np.random.choice(np.arange(len(prob_policy)), p=prob_policy)
+next_state, reward, done, _ = environment.step(action)
+episode.append((environment_state, action, reward))
+```
+
+### Q-Learning (Hit and Stand only): 
+
+A decaying value of $\epsilon$ is used as the exploration factor to ensure the agent minimizes exploring beyond some point where enough about the environment has been learnt. 
 
