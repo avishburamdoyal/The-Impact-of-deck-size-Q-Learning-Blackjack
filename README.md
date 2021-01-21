@@ -115,5 +115,5 @@ episode.append((environment_state, action, reward))
 
 ### Q-Learning (Hit and Stand only): 
 
-A decaying value of \epsilon is used as the exploration factor to ensure the agent minimizes exploring beyond some point where enough about the environment has been learnt. 
+A decaying value of ![epsilon](https://latex.codecogs.com/gif.latex?%5Cepsilon) is used as the exploration factor to ensure the agent minimizes exploring beyond some point where enough about the environment has been learnt. 
 
