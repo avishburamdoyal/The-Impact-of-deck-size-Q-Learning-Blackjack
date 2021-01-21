@@ -203,6 +203,58 @@ def backtest_model(self, n):
         profit.append(self.blackjack_game())
     return profit
 ```
+
 ### Analyzing Strategy Table (Extended Q-Learning: All actions implemented): 
 
-Here, we adapt the functions from [[Wu, 2018]](https://github.com/nalkpas/CS230-2018-Project) and make use of only 3 modules: **main**, **Q Learning - qscores** and **Q Learning - states mapping**.
+Here, we adapt the functions from [[Wu, 2018]](https://github.com/nalkpas/CS230-2018-Project) and make use of only 3 modules: **main**, **Q Learning - qscores** and **Q Learning - states mapping**. 
+
+Module **main** allows the blackjack simulation to happen. Under the module **Q Learning - qscores**, we use the function **state_conversion** which returns a csv file **Qsa_values.csv** containing action-value entries, **Q(s,a)**. 
+
+```python
+def state_conversion(state):
+	state = list(state)
+	out = ""
+	for z in state[:-1]:
+		out += str(z) + "-"
+	out += str(state[-1])
+	return out
+
+with open("q_scores/Qsa_values.csv","w") as file:
+	for state, q_values in Q_values.items():
+		file.write(state_conversion(state) + ",")
+		for q_value in q_values:
+			file.write(str(q_value) + ",")
+		file.write("\n")
+```
+
+The mapping from action-values to states with respective actions is done using a new **state_conversion** function, under the **Q Learning - states** module, calling the **Qsa_values.csv*** file and converting it to the strategy table as we require. 
+
+```python
+def state_coversion(str):
+	out = str.split("-")
+	out = [float(k) for k in out]
+	out = [int(k) for k in out]
+	return tuple(out)
+
+Q_values = defaultdict(lambda: np.zeros(finite_sm.allowable_actions))
+with open("q_scores/Qsa_values.csv") as file:
+	Q_csv = [line.strip().split(",") for line in file]
+for line in Q_csv:
+	Q_values[state_coversion(line[0])] = np.array(line[1:-1],dtype=float)
+	
+actions_possible = {0: "H", 1: "S", 2: "Rh", 3: "DD", 4: "P"}
+with open("optimal_policy/Analyzing Strategy Table.csv", "w") as file:
+	file.write("state,")
+	for dealer in range(2,12):
+		file.write(str(dealer) + ",")
+	file.write("\n")
+	for self_state, actions in policy.items():
+		file.write(str(self_state[0]) + " " + str(self_state[1]) + " " + str(self_state[3]) + ",")
+		for action in actions:
+			file.write(str(actions_possible[action]) + ",")
+		file.write("\n")
+```
+
+### Perfect card counter implementation: 
+
+ 
