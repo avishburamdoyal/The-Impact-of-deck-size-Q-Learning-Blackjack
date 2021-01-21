@@ -146,7 +146,7 @@ def parameters(self):
     self.num_remaining_training_episodes -= 1
 ```
 
-### Impact of deck-size Q-Learning Blackjack (Hit and Stand only): 
+### Impact of deck-size (Extended Q-Learning: All actions implemented): 
 Here, we allow for a variation in our deck size by defining the class **Deck**. In this case, we are allowing for a blackjack game with 8 decks but the number of decks had to be manually changed to assess the impact a variation in deck size across different counting systems would have. 
 
 ```python
