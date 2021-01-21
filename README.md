@@ -24,9 +24,23 @@ from gym import envs
 #Available environments
 print(envs.registry.all())
 
-dict_values([EnvSpec(Copy-v0), EnvSpec(RepeatCopy-v0), EnvSpec(ReversedAddition-v0), EnvSpec(ReversedAddition3-v0), EnvSpec(DuplicatedInput-v0), EnvSpec(Reverse-v0), EnvSpec(CartPole-v0), EnvSpec(CartPole-v1),..... ])
+dict_values([EnvSpec(Copy-v0), EnvSpec(RepeatCopy-v0), EnvSpec(ReversedAddition-v0), EnvSpec(ReversedAddition3-v0), 
+EnvSpec(DuplicatedInput-v0), EnvSpec(Reverse-v0), EnvSpec(CartPole-v0), EnvSpec(CartPole-v1),..... ])
 ```
 
+Gym provides a total of 859 environments but we call the blackjack environment.
+
+```python
+#Calling environment
+environment = gym.make('Blackjack-v0')
+
+environment
+<gym.envs.toy_text.blackjack.BlackjackEnv object at 0x000002B617E416A0>
+```
+
+## Gym environment definitions 
+
+### ok
 
 
 
