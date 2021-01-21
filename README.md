@@ -257,4 +257,85 @@ with open("optimal_policy/Analyzing Strategy Table.csv", "w") as file:
 
 ### Perfect card counter implementation: 
 
+In this model, we allow for a variation in the number of players, decks at play and the number of simulations played. We also allow the dealer the choice to either hit or stand on having a soft 17. We also choose to make the game more realistic by implementing 4 allowable actions: hit, stand, double down and split. 
  
+```python
+num_players = eval(input("Enter number of players: ")) 
+decks = eval(input("Enter number of decks: ")) 
+standOrHit = input("Will the dealer stand or hit on Soft 17: ") 
+simulation = eval(input("Enter number of simulations: "))  size
+
+#Deck and ace
+deck = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"]*4*decks
+ace_value = [1,11]
+
+player_choices = ["hit","double down","stand","split"]
+```
+
+we create a function that returns the index to cards based on Hi-Lo system to be used by the perfect counter to bet at each round. **playersBet** represents an array for which a **random player** randomly chooses one of the 4 entries as % out of bankroll to bet per round. 
+
+```python
+def getCount(card):
+    if card == 2 or card == 3 or card == 4 or card == 5 or card == 6:
+        return 1
+    elif card == 7 or card == 8 or card == 9:
+        return 0
+    else:
+        return -1
+
+playersBet = [0.05,0.10,0.35,0.6] 
+```
+
+We also have to formulate the **True Count** computation to be stored by the card counter. 
+
+```python
+for j in range (len(hands[i])):
+                if i != (len(hands) - 1):
+                    running_count += getCount(hands[i][j])
+                    cards_dealt += 1
+                else:
+                    if j != 1:
+                        running_count += getCount(hands[i][j])
+                        cards_dealt += 1
+                    else:
+                        cards_dealt += 1
+                        
+        decks_remaining = (decks*52 - cards_dealt)/(decks*52)
+        if decks_remaining == 0:
+            pass
+        else:
+            true_count = running_count/decks_remaining
+```
+
+We impose intuitive actions for the random player and allow the card counter to follow the basic strategy tables adapted by [[Shackleford, 2019]](http://wizardofodds.com/games/blackjack/strategy/4-decks/)
+
+The random agents always randomly choose an action from **player_choices**. If "hit" is chosen the player hits only 3 times for having a total of less than 6 and hits 2 times for a hand total of 6 or more. This is done to avoid the random agent going a bust. 
+
+```python
+elif (player_choices[random.randint(0,2)] == "hit"): 
+                    
+#Hit 3 times if sum total less than 6
+if (sum(hands[i])<6):
+    hands[i].append(getValue(deck.pop(0)))
+    hands[i].append(getValue(deck.pop(0)))
+    hands[i].append(getValue(deck.pop(0)))
+                        
+#Hit 2 times if sum total more than or equal to 6
+else:
+    hands[i].append(getValue(deck.pop(0)))
+    hands[i].append(getValue(deck.pop(0)))
+```
+
+we provide an example of the implementation of the strategy table by [[Shackleford, 2019]](http://wizardofodds.com/games/blackjack/strategy/4-decks/) in implementing the last model. The below example is only for the sake of showing how the strategy table was implemented for one state. The below means that for a case where the dealer stands on soft 17 and the dealer's face up card is a 10, the player will hit for having either a 10 or an ace.
+
+```python
+#Dealer stands on soft 17    
+if (standOrHit == "stand"):
+
+    if (sum(hands[0])==10):
+        if (hands[num_players][0]==10 or hands[num_players][0]=="A"):
+            hands[0].append(getValue(deck.pop(0)))
+```
+
+
+
