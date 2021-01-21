@@ -1,7 +1,7 @@
 # The Impact of deck-size Q-Learning Blackjack
 
 ## Authors 
--	Avish Buramdoyal
+- Avish Buramdoyal
 - Tim Gebbie
 
 ## Resources access
@@ -227,7 +227,7 @@ with open("q_scores/Qsa_values.csv","w") as file:
 		file.write("\n")
 ```
 
-The mapping from action-values to states with respective actions is done using a new **state_conversion** function, under the **Q Learning - states** module, calling the **Qsa_values.csv*** file and converting it to the strategy table as we require. 
+The mapping from action-values to states with respective actions is done using a new **state_conversion** function, under the **Q Learning - states** module, calling the **Qsa_values.csv** file and converting it to the strategy table as we require. 
 
 ```python
 def state_coversion(str):
@@ -326,7 +326,7 @@ else:
     hands[i].append(getValue(deck.pop(0)))
 ```
 
-we provide an example of the implementation of the strategy table by [[Shackleford, 2019]](http://wizardofodds.com/games/blackjack/strategy/4-decks/) in implementing the last model. The below example is only for the sake of showing how the strategy table was implemented for one state. The below means that for a case where the dealer stands on soft 17 and the dealer's face up card is a 10, the player will hit for having either a 10 or an ace.
+We provide an example of the implementation of the strategy table by [[Shackleford, 2019]](http://wizardofodds.com/games/blackjack/strategy/4-decks/) in implementing the last model. The below example is only for the sake of showing how the strategy table was implemented for one state. The below means that for a case where the dealer stands on soft 17 and the dealer's face up card is a 10, the player will hit for having either a 10 or an ace.
 
 ```python
 #Dealer stands on soft 17    
