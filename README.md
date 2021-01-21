@@ -326,7 +326,7 @@ else:
     hands[i].append(getValue(deck.pop(0)))
 ```
 
-We provide an example of the implementation of the strategy table by [[Shackleford, 2019]](http://wizardofodds.com/games/blackjack/strategy/4-decks/) in implementing the last model. The below example is only for the sake of showing how the strategy table was implemented for one state. The below means that for a case where the dealer stands on soft 17 and the dealer's face up card is a 10, the player will hit for having either a 10 or an ace.
+We provide an example of the implementation of the strategy table by [[Shackleford, 2019]](http://wizardofodds.com/games/blackjack/strategy/4-decks/) for the last model. The below example is only for the sake of showing how the strategy table was implemented for one state. The below means that for a case where the dealer stands on soft 17 and the dealer's face up card is a 10, the player will hit for having either a 10 or an ace.
 
 ```python
 #Dealer stands on soft 17    
