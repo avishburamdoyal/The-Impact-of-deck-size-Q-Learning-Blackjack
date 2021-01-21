@@ -41,7 +41,7 @@ environment
 ## Blackjack Gym environment functionalities 
 
 ### State space definition: 
-The observation space defined by a 3-tuple of the player's hand total, the dealer's face up card and whether or not the player has a usable ace.
+The observation space is defined by a 3-tuple of the player's hand total, the dealer's face up card and whether or not the player has a usable ace.
 
 ```python
 #Verifying state space definition
@@ -72,7 +72,7 @@ To perform an action, we use the **step** function which takes the **action** as
 environment.step(environment.action_space.sample())
 ((23, 3, False), -1.0, True, {})
 ```
-The above output shows that the player has no usable ace and a total of 23, i.e. he busted and the dealer's face up is a 3. The player busted by hitting, indicated by **True***. Clearly, the player loses the bet, indicated by -1,
+The above output shows that the player has no usable ace and a total of 23, i.e. he busted and the dealer's face up is a 3. The player busted by hitting, indicated by **True**. Clearly, the player loses the bet, indicated by -1,
 
 ## Generating 3D plots 
 
@@ -114,7 +114,7 @@ episode.append((environment_state, action, reward))
 ```
 
 ### Q-Learning (Hit and Stand only): 
-A decaying value of ![epsilon](https://latex.codecogs.com/gif.latex?%5Cepsilon) is used as the exploration factor to ensure the agent minimizes exploring beyond some point where enough about the environment has been learnt. We first set the paramaters of the agent: a Q table, the random exploration factor ![epsilon](https://latex.codecogs.com/gif.latex?%5Cepsilon), the learning rate ![alpha](https://latex.codecogs.com/gif.latex?%5Calpha) and discount factor ![gamma](https://latex.codecogs.com/gif.latex?%5Cgamma). ![epsilon](https://latex.codecogs.com/gif.latex?%5Cepsilon) is then reduced linearly as the number of episodes is varied, as adapted from [[Bija, 2017]](https://github.com/Pradhyo/blackjack/blob/master/blackjack.ipynb)
+A decaying value of ![epsilon](https://latex.codecogs.com/gif.latex?%5Cepsilon) is used as the exploration factor to ensure the agent minimizes exploring beyond some point where enough about the environment has been learnt. We first set the paramaters of the agent: a Q table, the random exploration factor ![epsilon](https://latex.codecogs.com/gif.latex?%5Cepsilon), the learning rate ![alpha](https://latex.codecogs.com/gif.latex?%5Calpha) and a discount factor, ![gamma](https://latex.codecogs.com/gif.latex?%5Cgamma). ![epsilon](https://latex.codecogs.com/gif.latex?%5Cepsilon) is then reduced linearly as the number of episodes is varied, as adapted from [[Bija, 2017]](https://github.com/Pradhyo/blackjack/blob/master/blackjack.ipynb)
 
 ```python
 #Setting paramateres of our RL agent 
@@ -257,7 +257,7 @@ with open("optimal_policy/Analyzing Strategy Table.csv", "w") as file:
 
 ### Perfect card counter implementation: 
 
-In this model, we allow for a variation in the number of players, decks at play and the number of simulations played. We also allow the dealer the choice to either hit or stand on having a soft 17. We also choose to make the game more realistic by implementing 4 allowable actions: hit, stand, double down and split. 
+In this model, we allow for a variation in the number of players, decks at play and the number of simulations played. We also allow the dealer the choice to either hit or stand on having a soft 17. We choose to make the game more realistic by implementing 4 allowable actions: hit, stand, double down and split. One player, a "perfect card counter" pefectly sizes his bet using the Hi-Lo system and requests actions as per a strategy table. 
  
 ```python
 num_players = eval(input("Enter number of players: ")) 
@@ -272,7 +272,7 @@ ace_value = [1,11]
 player_choices = ["hit","double down","stand","split"]
 ```
 
-we create a function that returns the index to cards based on Hi-Lo system to be used by the perfect counter to bet at each round. **playersBet** represents an array for which a **random player** randomly chooses one of the 4 entries as % out of bankroll to bet per round. 
+we create a function that returns the index to cards based on Hi-Lo system to be used by the perfect card counter to bet at each round. **playersBet** represents an array for which a **random player** randomly chooses one of the 4 entries as % out of bankroll to bet per round. 
 
 ```python
 def getCount(card):
