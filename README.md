@@ -125,7 +125,8 @@ self.gamma = gamma
 
 #Epsilon decay
 self.num_training_episodes = num_training_episodes 
-self.small_decay = (0.1 * epsilon) / (0.3 * num_training_episodes)         self.big_decay = (0.8 * epsilon) / (0.4 * num_training_episodes)
+self.small_decay = (0.1 * epsilon) / (0.3 * num_training_episodes)         
+self.big_decay = (0.8 * epsilon) / (0.4 * num_training_episodes)
 self.num_remaining_training_episodes= num_training_episodes
 ```
 
@@ -181,7 +182,7 @@ class Train_agent:
             self.blackjack_game()
 ```
 
-In addition, we define a class **Backtest_rl_agent** adapted from [[Jung, 2018]](https://github.com/youngho92/Blackjack_Project ReinforcementLearning/blob/master/codes/backtest.py) based on the training Q model and initialize the required paramaters. We then backtest the model n times and the payoff achieved by the trained agent is returned. 
+In addition, we define a class **Backtest_rl_agent** adapted from [[Jung, 2018]](https://github.com/youngho92/Blackjack_Project-ReinforcementLearning/blob/master/codes/backtest.py) based on the training Q model and initialize the required paramaters. We then backtest the model n times and the payoff achieved by the trained agent is returned. 
 
 ```python
 class Backtest_rl_agent:
@@ -202,3 +203,6 @@ def backtest_model(self, n):
         profit.append(self.blackjack_game())
     return profit
 ```
+### Analyzing Strategy Table (Extended Q-Learning: All actions implemented): 
+
+Here, we adapt the functions from [[Wu, 2018]](https://github.com/nalkpas/CS230-2018-Project) and make use of only 3 modules: **main**, **Q Learning - qscores** and **Q Learning - states mapping**.
