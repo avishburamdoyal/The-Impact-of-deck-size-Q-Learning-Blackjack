@@ -272,7 +272,7 @@ ace_value = [1,11]
 player_choices = ["hit","double down","stand","split"]
 ```
 
-we create a function that returns the index to cards based on Hi-Lo system to be used by the perfect card counter to bet at each round. **playersBet** represents an array for which a **random player** randomly chooses one of the 4 entries as % out of bankroll to bet per round. 
+We create a function that returns the index to cards based on Hi-Lo system to be used by the perfect card counter to bet at each round. **playersBet** represents an array for which a **random player** randomly chooses one of the 4 entries as % out of bankroll to bet per round. 
 
 ```python
 def getCount(card):
