@@ -6,8 +6,8 @@
 
 ## Resources access
 
-Link: [Paper](https://www.google.com)
-DOI: 
+- Link: [Paper](https://www.google.com)
+- DOI: 
 
 
 ## Reproducing the research 
