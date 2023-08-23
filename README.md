@@ -115,7 +115,7 @@ episode.append((environment_state, action, reward))
 ```
 
 ### Q-Learning (Hit and Stand only): 
-A decaying value of ![epsilon](https://latex.codecogs.com/gif.latex?%5Cepsilon) is used as the exploration factor to ensure the agent minimizes exploring beyond some point where enough about the environment has been learnt. We first set the paramaters of the agent: a Q table, the random exploration factor ![epsilon](https://latex.codecogs.com/gif.latex?%5Cepsilon), the learning rate ![alpha](https://latex.codecogs.com/gif.latex?%5Calpha) and a discount factor, ![gamma](https://latex.codecogs.com/gif.latex?%5Cgamma). ![epsilon](https://latex.codecogs.com/gif.latex?%5Cepsilon) is then reduced linearly as the number of episodes is varied, as adapted from [[Bija, 2017]](https://github.com/Pradhyo/blackjack/blob/master/blackjack.ipynb)
+A decaying value of ![epsilon](https://latex.codecogs.com/gif.latex?%5Cepsilon) is used as the exploration factor to ensure the agent minimizes exploring beyond some point where enough about the environment has been learnt. We first set the paramaters of the agent: a Q table, the random exploration factor ![epsilon](https://latex.codecogs.com/gif.latex?%5Cepsilon), the learning rate ![alpha](https://latex.codecogs.com/gif.latex?%5Calpha) and a discount factor, ![gamma](https://latex.codecogs.com/gif.latex?%5Cgamma). ![epsilon](https://latex.codecogs.com/gif.latex?%5Cepsilon) is then reduced linearly as the number of episodes is varied.
 
 ```python
 #Setting paramateres of our RL agent 
@@ -183,7 +183,7 @@ class Train_agent:
             self.blackjack_game()
 ```
 
-In addition, we define a class **Backtest_rl_agent** adapted from [[Jung, 2018]](https://github.com/youngho92/Blackjack_Project-ReinforcementLearning/blob/master/codes/backtest.py) based on the training Q model and initialize the required paramaters. We then backtest the model n times and the payoff achieved by the trained agent is returned. 
+In addition, we define a class **Backtest_rl_agent**, based on the training Q model and initialize the required paramaters. We then backtest the model n times and the payoff achieved by the trained agent is returned. 
 
 ```python
 class Backtest_rl_agent:
@@ -207,7 +207,7 @@ def backtest_model(self, n):
 
 ### Analyzing Strategy Table (Extended Q-Learning: All actions implemented): 
 
-Here, we adapt the functions from [[Wu, 2018]](https://github.com/nalkpas/CS230-2018-Project) and make use of only 3 modules: **main**, **Q Learning - qscores** and **Q Learning - states mapping**. 
+Here, we make use of  3 modules: **main**, **Q Learning - qscores** and **Q Learning - states mapping**. 
 
 Module **main** allows the blackjack simulation to happen. Under the module **Q Learning - qscores**, we use the function **state_conversion** which returns a csv file **Qsa_values.csv** containing action-value entries, **Q(s,a)**. 
 
