@@ -6,7 +6,7 @@
 
 ## Resources access
 
-- Link: [Paper]([https://www.google.com](https://arxiv.org/abs/2308.07329))
+- Link: [Paper](https://arxiv.org/abs/2308.07329)
 
 ## Reproducing the research 
 All the script files for obtaining the results can be found under [GitHub resource](https://github.com/avb1597/The-Impact-of-deck-size-Q-Learning-Blackjack). The first requirement to reproduce this research is to clone the GitHub resource. Upon the installation of the required packages, the next requirement is to run the script files and produce the results.
